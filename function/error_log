@@ -1,0 +1,85 @@
+[06-Apr-2020 09:22:09 Asia/Jakarta] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/aplika35/public_html/function/db_connect.php on line 5
+[06-Apr-2020 09:22:09 Asia/Jakarta] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, boolean given in /home/aplika35/public_html/function/login.php on line 12
+[06-Apr-2020 09:22:09 Asia/Jakarta] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/aplika35/public_html/function/login.php on line 13
+[06-Apr-2020 09:22:09 Asia/Jakarta] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, null given in /home/aplika35/public_html/function/login.php on line 14
+[06-Apr-2020 09:22:17 Asia/Jakarta] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/aplika35/public_html/function/db_connect.php on line 5
+[06-Apr-2020 09:22:17 Asia/Jakarta] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, boolean given in /home/aplika35/public_html/function/login.php on line 12
+[06-Apr-2020 09:22:17 Asia/Jakarta] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/aplika35/public_html/function/login.php on line 13
+[06-Apr-2020 09:22:17 Asia/Jakarta] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, null given in /home/aplika35/public_html/function/login.php on line 14
+[06-Apr-2020 09:22:25 Asia/Jakarta] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/aplika35/public_html/function/db_connect.php on line 5
+[06-Apr-2020 09:22:25 Asia/Jakarta] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, boolean given in /home/aplika35/public_html/function/login.php on line 12
+[06-Apr-2020 09:22:25 Asia/Jakarta] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/aplika35/public_html/function/login.php on line 13
+[06-Apr-2020 09:22:25 Asia/Jakarta] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, null given in /home/aplika35/public_html/function/login.php on line 14
+[06-Apr-2020 09:22:30 Asia/Jakarta] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/aplika35/public_html/function/db_connect.php on line 5
+[06-Apr-2020 09:22:30 Asia/Jakarta] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, boolean given in /home/aplika35/public_html/function/login.php on line 12
+[06-Apr-2020 09:22:30 Asia/Jakarta] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/aplika35/public_html/function/login.php on line 13
+[06-Apr-2020 09:22:30 Asia/Jakarta] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, null given in /home/aplika35/public_html/function/login.php on line 14
+[06-Apr-2020 09:22:34 Asia/Jakarta] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/aplika35/public_html/function/db_connect.php on line 5
+[06-Apr-2020 09:22:34 Asia/Jakarta] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, boolean given in /home/aplika35/public_html/function/login.php on line 12
+[06-Apr-2020 09:22:34 Asia/Jakarta] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/aplika35/public_html/function/login.php on line 13
+[06-Apr-2020 09:22:34 Asia/Jakarta] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, null given in /home/aplika35/public_html/function/login.php on line 14
+[06-Apr-2020 09:22:44 Asia/Jakarta] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/aplika35/public_html/function/db_connect.php on line 5
+[06-Apr-2020 09:22:44 Asia/Jakarta] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, boolean given in /home/aplika35/public_html/function/login.php on line 12
+[06-Apr-2020 09:22:44 Asia/Jakarta] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/aplika35/public_html/function/login.php on line 13
+[06-Apr-2020 09:22:44 Asia/Jakarta] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, null given in /home/aplika35/public_html/function/login.php on line 14
+[15-Apr-2020 17:00:54 Asia/Jakarta] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home/aplika35/public_html/function/getSoal.php on line 73
+[16-Apr-2020 12:15:22 Asia/Jakarta] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home/aplika35/public_html/function/getSoal.php on line 73
+[16-Apr-2020 15:46:14 Asia/Jakarta] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home/aplika35/public_html/function/mainFunction.php on line 21
+[16-Apr-2020 15:46:14 Asia/Jakarta] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home/aplika35/public_html/function/mainFunction.php on line 133
+[16-Apr-2020 15:46:15 Asia/Jakarta] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home/aplika35/public_html/function/getSoal.php on line 73
+[16-Apr-2020 19:14:47 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Call to undefined function mysqli_num_row() in /home/aplika35/public_html/function/getSoal.php:65
+Stack trace:
+#0 {main}
+  thrown in /home/aplika35/public_html/function/getSoal.php on line 65
+[16-Apr-2020 19:14:49 Asia/Jakarta] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home/aplika35/public_html/function/mainFunction.php on line 21
+[16-Apr-2020 19:14:49 Asia/Jakarta] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home/aplika35/public_html/function/mainFunction.php on line 133
+[16-Apr-2020 19:14:50 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Call to undefined function mysqli_num_row() in /home/aplika35/public_html/function/getSoal.php:65
+Stack trace:
+#0 {main}
+  thrown in /home/aplika35/public_html/function/getSoal.php on line 65
+[16-Apr-2020 19:14:50 Asia/Jakarta] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home/aplika35/public_html/function/mainFunction.php on line 21
+[16-Apr-2020 19:14:50 Asia/Jakarta] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home/aplika35/public_html/function/mainFunction.php on line 133
+[16-Apr-2020 19:14:51 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Call to undefined function mysqli_num_row() in /home/aplika35/public_html/function/getSoal.php:65
+Stack trace:
+#0 {main}
+  thrown in /home/aplika35/public_html/function/getSoal.php on line 65
+[16-Apr-2020 19:16:28 Asia/Jakarta] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home/aplika35/public_html/function/mainFunction.php on line 21
+[16-Apr-2020 19:16:28 Asia/Jakarta] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home/aplika35/public_html/function/mainFunction.php on line 133
+[16-Apr-2020 19:16:28 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Call to undefined function mysqli_num_row() in /home/aplika35/public_html/function/getSoal.php:65
+Stack trace:
+#0 {main}
+  thrown in /home/aplika35/public_html/function/getSoal.php on line 65
+[16-Apr-2020 19:16:29 Asia/Jakarta] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home/aplika35/public_html/function/mainFunction.php on line 21
+[16-Apr-2020 19:16:29 Asia/Jakarta] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home/aplika35/public_html/function/mainFunction.php on line 133
+[16-Apr-2020 19:16:30 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Call to undefined function mysqli_num_row() in /home/aplika35/public_html/function/getSoal.php:65
+Stack trace:
+#0 {main}
+  thrown in /home/aplika35/public_html/function/getSoal.php on line 65
+[16-Apr-2020 19:16:30 Asia/Jakarta] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home/aplika35/public_html/function/mainFunction.php on line 21
+[16-Apr-2020 19:16:30 Asia/Jakarta] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home/aplika35/public_html/function/mainFunction.php on line 133
+[16-Apr-2020 19:16:31 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Call to undefined function mysqli_num_row() in /home/aplika35/public_html/function/getSoal.php:65
+Stack trace:
+#0 {main}
+  thrown in /home/aplika35/public_html/function/getSoal.php on line 65
+[16-Apr-2020 19:16:31 Asia/Jakarta] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home/aplika35/public_html/function/mainFunction.php on line 21
+[16-Apr-2020 19:16:31 Asia/Jakarta] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home/aplika35/public_html/function/mainFunction.php on line 133
+[16-Apr-2020 19:16:32 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Call to undefined function mysqli_num_row() in /home/aplika35/public_html/function/getSoal.php:65
+Stack trace:
+#0 {main}
+  thrown in /home/aplika35/public_html/function/getSoal.php on line 65
+[16-Apr-2020 19:16:32 Asia/Jakarta] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home/aplika35/public_html/function/mainFunction.php on line 21
+[16-Apr-2020 19:16:32 Asia/Jakarta] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home/aplika35/public_html/function/mainFunction.php on line 133
+[16-Apr-2020 19:16:33 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Call to undefined function mysqli_num_row() in /home/aplika35/public_html/function/getSoal.php:65
+Stack trace:
+#0 {main}
+  thrown in /home/aplika35/public_html/function/getSoal.php on line 65
+[16-Apr-2020 19:16:33 Asia/Jakarta] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home/aplika35/public_html/function/mainFunction.php on line 21
+[16-Apr-2020 19:16:33 Asia/Jakarta] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home/aplika35/public_html/function/mainFunction.php on line 133
+[16-Apr-2020 19:16:34 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Call to undefined function mysqli_num_row() in /home/aplika35/public_html/function/getSoal.php:65
+Stack trace:
+#0 {main}
+  thrown in /home/aplika35/public_html/function/getSoal.php on line 65
+[16-Apr-2020 19:16:58 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Call to undefined function mysqli_num_row() in /home/aplika35/public_html/function/getSoal.php:65
+Stack trace:
+#0 {main}
+  thrown in /home/aplika35/public_html/function/getSoal.php on line 65
