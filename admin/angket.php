@@ -14,7 +14,7 @@ require '../layouts/sidebar.php'; ?>
                         <h4 class="header-title">Daftar angket</h4>
                         <hr>
                         <div class="btn-group float-right">
-                            <a href="#" class="btn btn-xs btn-primary float-right mb-3">Hasil angket</a>
+                            <a href="hasilangket.php" class="btn btn-xs btn-primary float-right mb-3">Hasil angket</a>
                             <a href="#" class="btn btn-xs btn-success float-right mb-3" data-toggle="modal" data-target="#tambahangket">Tambah angket</a>
                             <a href="#" class="btn btn-xs btn-warning float-right mb-3" data-toggle="modal" data-target="#tambahsubangket">Tambah sub angket</a>
                         </div>
@@ -43,7 +43,7 @@ require '../layouts/sidebar.php'; ?>
 <section>
 
     <!-- Modal -->
-    <div class="modal" id="detailSoal" tabindex="-1" role="dialog" aria-labelledby="detailSoalLabel" aria-hidden="true">
+    <!-- <div class="modal" id="detailSoal" tabindex="-1" role="dialog" aria-labelledby="detailSoalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -69,7 +69,7 @@ require '../layouts/sidebar.php'; ?>
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <!-- Modal -->
     <div class="modal" id="tambahangket" tabindex="-1" role="dialog" aria-labelledby="tambahangketLabel" aria-hidden="true">
