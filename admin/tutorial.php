@@ -40,16 +40,35 @@
     <section class="my-5">
         <div class="container">
             <div class="accordion" id="tutorial">
+                <div class="card" id="video-session">
+                    <div class="card-header" id="headingOne">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#video-tes" aria-expanded="true" aria-controls="video-tes">
+                                Video Tutorial
+                            </button>
+                        </h2>
+                    </div>
+
+                    <div id="video-tes" class="collapse show" aria-labelledby="headingOne" data-parent="#tutorial">
+                        <div class="card-body text-center">
+                            <div class="row d-flex align-items-center justify-content-center">
+                                <div class="col-12">
+                                    <iframe width="752" height="380" src="https://www.youtube.com/embed/XIKBgqkNqAE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="card">
                     <div class="card-header" id="headingOne">
                         <h2 class="mb-0">
-                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="" aria-expanded="true" aria-controls="fitur-tes-cat">
+                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#fitur-tes-cat" aria-expanded="true" aria-controls="fitur-tes-cat">
                                 Fitur Tes Adaptif
                             </button>
                         </h2>
                     </div>
 
-                    <div id="fitur-tes-cat" class="collapse show" aria-labelledby="headingOne" data-parent="#tutorial">
+                    <div id="fitur-tes-cat" class="collapse" aria-labelledby="headingOne" data-parent="#tutorial">
                         <div class="card-body">
                             <ol>
                                 <li class="my-1"><b>Dashboard</b><br>
@@ -114,6 +133,7 @@
 
     <script>
         $('#cetak-btn').on('click', function() {
+            $('#video-session').hide();
             $('#materi-tes').addClass('show');
             $('#fitur-tes-cat').addClass('show');
             $('#bentuk-tes').addClass('show');

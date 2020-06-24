@@ -41,7 +41,7 @@ require '../function/countAll.php'; ?>
                 </div>
             </div>
             <div class="col-md-4 mt-4">
-                <a href="../assets/Buku-Panduan-Penggunaan-CAT.docx">
+                <a href="../assets/Buku-Panduan-Penggunaan-CAT.pdf">
                     <div class="card">
                         <div class="seo-fact sbg4">
                             <div class="p-4 d-flex justify-content-between align-items-center">
@@ -52,9 +52,4 @@ require '../function/countAll.php'; ?>
                     </div>
                 </a>
             </div>
-        </div
-    </div>
-</div>
-
-<?php require '../layouts/footer.php'; ?>
-<?php require '../layouts/close.php'; ?>
+        </div </div> </div> <?php require '../layouts/footer.php'; ?> <?php require '../layouts/close.php'; ?>

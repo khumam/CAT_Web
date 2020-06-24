@@ -53,7 +53,7 @@
                         <div class="card-body text-center">
                             <div class="row d-flex align-items-center justify-content-center">
                                 <div class="col-12">
-                                    <iframe width="752" height="380" src="https://www.youtube.com/embed/HZ0uUg72Xws" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                    <iframe width="752" height="380" src="https://www.youtube.com/embed/XIKBgqkNqAE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                 </div>
                             </div>
                         </div>
@@ -142,20 +142,20 @@
                             mengunduh atau mencetak hasil tes
                             dan tombol kembali untuk ke halaman sebelumnya.<br><br>
                             <div class="text-center">
-                                <img src="assets/images/tutorial/output-1.png" alt="Output">
+                                <img src="../assets/images/tutorial/output-1.png" alt="Output">
                             </div>
                             <br><br>
                             Tabel akan menampilkan riwayat peserta mengerjakan tes. Dalam tabel terdapat
                             perhitungan-perhitungan yang dihitung
                             dengan persamaan sebagai berikut <br><br>
                             <div class="text-center">
-                                <img src="assets/images/tutorial/rumus-1.png" alt=""><br><br>
-                                <img src="assets/images/tutorial/rumus-2.png" alt=""><br><br>
-                                <img src="assets/images/tutorial/rumus-3.png" alt=""><br><br>
-                                <img src="assets/images/tutorial/rumus-4.png" alt=""><br><br>
-                                <img src="assets/images/tutorial/rumus-5.png" alt=""><br><br>
-                                <img src="assets/images/tutorial/rumus-6.png" alt=""><br><br>
-                                <img src="assets/images/tutorial/rumus-7.png" alt=""><br><br>
+                                <img src="../assets/images/tutorial/rumus-1.png" alt=""><br><br>
+                                <img src="../assets/images/tutorial/rumus-2.png" alt=""><br><br>
+                                <img src="../assets/images/tutorial/rumus-3.png" alt=""><br><br>
+                                <img src="../assets/images/tutorial/rumus-4.png" alt=""><br><br>
+                                <img src="../assets/images/tutorial/rumus-5.png" alt=""><br><br>
+                                <img src="../assets/images/tutorial/rumus-6.png" alt=""><br><br>
+                                <img src="../assets/images/tutorial/rumus-7.png" alt=""><br><br>
                             </div>
                             Keterangan :<br>
                             θ &nbsp;: tingkat kemampuan tes<br>
@@ -168,20 +168,20 @@
                             IIF : Fungsi Informasi<br>
                             SE : Standar error<br><br>
                             <div class="text-center">
-                                <img src="assets/images/tutorial/output-2.png" alt="">
+                                <img src="../assets/images/tutorial/output-2.png" alt="">
                             </div>
                             <br><br>Untuk mengetahui keterangan pada aplikasi, maka admin dapat mengarahkan kursor pada
                             simbol yang diinginkan, maka akan
                             muncul keterangan pada simbol tersebut.<br><br>
                             <div class="text-center">
-                                <img src="assets/images/tutorial/output-3.png" alt="">
+                                <img src="../assets/images/tutorial/output-3.png" alt="">
                             </div>
                             <br><br>Selain tabel perhitungan, terdapat tabel statistik soal yang terdapat pada aplikasi,
                             tujuan adanya tabel ini agar admin
                             mengetahui soal yang telah dikerjakan oleh peserta ujian.<br><br>
                             <div class="text-center">
-                                <img src="assets/images/tutorial/output-4.png" alt=""><br><br>
-                                <img src="assets/images/tutorial/output-5.png" alt="">
+                                <img src="../assets/images/tutorial/output-4.png" alt=""><br><br>
+                                <img src="../assets/images/tutorial/output-5.png" alt="">
                             </div>
                             <br><br>Terdapat pula grafik kesulitan soal dan grafik skor. Grafik kesulitan terhadap nomor
                             soal menggambarkan siswa telah
