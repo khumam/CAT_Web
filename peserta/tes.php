@@ -5,19 +5,15 @@ require '../function/check_tes.php';
 require '../layouts/sidebar.php';
 ?>
 
-<!-- <div class="page-title-area">
+<div class="page-title-area">
     <div class="row align-items-center">
         <div class="col-sm-6 py-3">
             <div class="breadcrumbs-area clearfix">
-                <h4 class="page-title pull-left">Dashboard</h4>
-                <ul class="breadcrumbs pull-left">
-                    <li><a href="index.html">Home</a></li>
-                    <li><span>Dashboard</span></li>
-                </ul>
+                <h4 class="page-title pull-left">Nama : <?php echo $_SESSION['nama']; ?></h4>
             </div>
         </div>
     </div>
-</div> -->
+</div>
 
 <div class="main-content-inner">
     <div class="sales-report-area mt-5 mb-5">

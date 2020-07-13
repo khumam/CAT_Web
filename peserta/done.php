@@ -63,7 +63,7 @@ require '../function/getNilai.php';
                 </div>
                 <p>Silahkan klik tombol di bawah ini untuk melihat riwayat soal atau menyelesaikan sesi test</p>
                 <a href="riwayatSoal.php?idsiswa=<?php echo $idsiswa; ?>&idkodesoal=<?php echo $idkodesoal; ?>&sessionid=<?php echo $sessionid; ?>" class="btn btn-primary mt-2">Lihat Riwayat Soal</a>
-                <a href="../function/logout.php" class="mt-2 btn btn-success">Lanjutkan</a>
+                <a href="../function/lanjutkan.php" class="mt-2 btn btn-success">Lanjutkan</a>
             </div>
         </div>
     </div>

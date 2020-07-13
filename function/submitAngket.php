@@ -6,7 +6,7 @@ require 'db_connect.php';
 $user_id = $_POST['idsiswa'];
 $kd_judul_tes = $_POST['kd_judul_tes'];
 $session_id = $_POST['session_id'];
-$komentar = $_POST['komentar'];
+$komentar = (isset($_POST['komentar']) || $_POST['komentar'] != '') ? $_POST['komentar'] : ' ';
 
 $listAngketId = $_POST['angket_id']; //array
 for ($i = 0; $i < count($listAngketId); $i++) {

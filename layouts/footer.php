@@ -1,7 +1,7 @@
      </div>
      <footer>
          <div class="footer-area">
-             <p>© Copyright 2020. All right reserved.</p>
+             <p>Pengembang: Husnul Khotimah , Email: ayatulhusnul@gmail.com<br>© Copyright 2020. All right reserved.</p>
          </div>
      </footer>
 
@@ -24,17 +24,17 @@
      <!-- others plugins -->
      <script src="../assets/js/plugins.js"></script>
      <script src="../assets/js/scripts.js"></script>
-     
+
      <script>
          $('#full-view-tutorial').on('click', function() {
              window.open('../tutorial.html');
          });
          $('#tutorialBtn').on('click', function() {
              <?php if ($_SESSION['role'] == 'Guru') { ?>
-             window.open('../admin/tutorial.php');
+                 window.open('../admin/tutorial.php');
              <?php } ?>
              <?php if ($_SESSION['role'] == 'Peserta') { ?>
-             window.open('../peserta/tutorial.php');
+                 window.open('../peserta/tutorial.php');
              <?php } ?>
          });
      </script>

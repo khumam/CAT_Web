@@ -4,6 +4,16 @@ require '../layouts/header.php';
 require '../function/getRiwayatSoal.php';
 require '../layouts/sidebar.php'; ?>
 
+<div class="page-title-area">
+    <div class="row align-items-center">
+        <div class="col-sm-6 py-3">
+            <div class="breadcrumbs-area clearfix">
+                <h4 class="page-title pull-left">Nama : <?php echo $_SESSION['nama']; ?></h4>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="main-content-inner">
     <div class="sales-report-area mt-5 mb-5">
         <div class="row">
