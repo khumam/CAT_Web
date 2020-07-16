@@ -44,7 +44,7 @@ require '../layouts/sidebar.php'; ?>
                                 $soal = str_replace($dataRiwayat['jawab'] . ". ", "<b style='background:red; color:white'>" . $dataRiwayat['jawab'] . ". </b>", $soal);
                                 $soal = str_replace($dataRiwayat['kunci_soal'] . ". ", "<b style='background:green; color:white'>" . $dataRiwayat['kunci_soal'] . ". </b>", $soal);
                                 ?>
-                                <?php echo $dataRiwayat['state'] + 1 . ". " . ltrim($soal, '<p>'); ?>
+                                <?php echo $dataRiwayat['state'] + 1 . ". " . ltrim($soal) . '<p>'; ?>
                                 <hr>
                             </div>
                         <?php } ?>
