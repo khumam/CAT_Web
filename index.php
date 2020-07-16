@@ -38,7 +38,8 @@
                 <form action="function/login.php" method="POST">
                     <div class="login-form-head">
                         <img src="assets/images/icon/unnes.png" alt="" style="height:100px; width: auto">
-                        <h5 class="text-white mt-3">Hai, Selamat datang di Computer Adaptive Test</h5>
+                        <h5 class="text-white mt-3">Hai, Selamat datang di Computer Adaptive Test<br>Getaran, Gelombang, dan Bunyi</h5>
+                        <h6 class="text-white mt-3">Pengembang: Husnul Khotimah<br>Email: ayatulhusnul@gmail.com</h6>
                     </div>
                     <div class="login-form-body">
                         <div class="form-gp">
