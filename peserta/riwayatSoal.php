@@ -24,7 +24,8 @@ require '../layouts/sidebar.php'; ?>
                         <h6><?php echo $getTes['judul']; ?></h6>
                         <hr>
                         <div class="btn-group">
-                            <a href="../function/logout.php" class="btn btn-danger btn-xs">Kembali</a>
+                            <!-- <a href="../function/lanjutkan.php" class="btn btn-danger btn-xs">Kembali</a> -->
+                            <a href="<?php echo '../peserta/done.php?idsiswa=' . $_GET['idsiswa'] . '&idkodesoal=' . $_GET['idkodesoal'] . '&sessionid=' . $_GET['sessionid'] ?>"" class=" btn btn-danger btn-xs">Kembali</a>
                         </div>
                     </div>
                 </div>
