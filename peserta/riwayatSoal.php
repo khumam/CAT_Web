@@ -40,11 +40,11 @@ require '../layouts/sidebar.php'; ?>
                         <?php while ($dataRiwayat = mysqli_fetch_assoc($listRiwayatSoal)) { ?>
                             <div class="my-3">
                                 <?php
-                                $soal = nl2br($dataRiwayat['isi_soal']);
+                                $soal = $dataRiwayat['isi_soal'];
                                 $soal = str_replace($dataRiwayat['jawab'] . ". ", "<b style='background:red; color:white'>" . $dataRiwayat['jawab'] . ". </b>", $soal);
                                 $soal = str_replace($dataRiwayat['kunci_soal'] . ". ", "<b style='background:green; color:white'>" . $dataRiwayat['kunci_soal'] . ". </b>", $soal);
                                 ?>
-                                <?php echo $dataRiwayat['state'] + 1 . ". " . ltrim(str_replace('<br>', ' ', $soal)) . '<p>'; ?>
+                                <?php echo $dataRiwayat['state'] + 1 . ". " . ltrim($soal) . '<p>'; ?>
                                 <hr>
                             </div>
                         <?php } ?>
