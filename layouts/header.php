@@ -31,6 +31,12 @@
 
     <!-- modernizr css -->
     <script src="../assets/js/vendor/modernizr-2.8.3.min.js"></script>
+
+    <style>
+        .inlineRS p:first-of-type {
+            display: inline !important;
+        }
+    </style>
 </head>
 
 <body>

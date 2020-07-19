@@ -38,7 +38,7 @@ require '../layouts/sidebar.php'; ?>
                         <span style="background: red; padding 3px; color: white"> Jawaban salah/peserta </span>
                         <hr>
                         <?php while ($dataRiwayat = mysqli_fetch_assoc($listRiwayatSoal)) { ?>
-                            <div class="my-3">
+                            <div class="my-3 inlineRS">
                                 <?php
                                 $soal = $dataRiwayat['isi_soal'];
                                 $soal = str_replace($dataRiwayat['jawab'] . ". ", "<b style='background:red; color:white'>" . $dataRiwayat['jawab'] . ". </b>", $soal);

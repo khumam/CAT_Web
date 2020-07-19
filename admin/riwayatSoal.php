@@ -27,14 +27,14 @@ require '../layouts/sidebar.php'; ?>
                         <span style="background: red; padding 3px; color: white"> Jawaban salah/peserta </span>
                         <hr>
                         <?php while ($dataRiwayat = mysqli_fetch_assoc($listRiwayatSoal)) { ?>
-                            <div class="my-3">
+                            <div class="my-3 inlineRS">
                                 <?php
                                 if ($dataRiwayat['jawab'] != null) {
                                     $dataRiwayat['isi_soal'] = str_replace($dataRiwayat['jawab'] . ". ", "<b style='background:red; color:white'>" . $dataRiwayat['jawab'] . ". </b>", $dataRiwayat['isi_soal']);
                                 }
                                 $dataRiwayat['isi_soal'] = str_replace($dataRiwayat['kunci_soal'] . ". ", "<b style='background:green; color:white'>" . $dataRiwayat['kunci_soal'] . ". </b>", $dataRiwayat['isi_soal']);
                                 ?>
-                                <p class="lead"><?php echo $dataRiwayat['state'] + 1 . ". " . ltrim($dataRiwayat['isi_soal']); ?> </p>
+                                <?php echo $dataRiwayat['state'] + 1 . ". " . ltrim($dataRiwayat['isi_soal']); ?>
                                 <hr>
                             </div>
                         <?php } ?>
@@ -47,7 +47,4 @@ require '../layouts/sidebar.php'; ?>
 
 
 <?php require '../layouts/footer.php'; ?>
-<script>
-    $('.MsoListParagraphCxSpFirst').removeClass('MsoListParagraphCxSpFirst');
-</script>
 <?php require '../layouts/close.php'; ?>
