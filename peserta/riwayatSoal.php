@@ -34,7 +34,7 @@ require '../layouts/sidebar.php'; ?>
                 <div class="card">
                     <div class="card-body">
                         <h4>Riwayat Tes</h4><br>
-                        <span style="background: green; padding 4px; color: white"> Jawaban benar </span><br>
+                        <span style="background: green; padding 4px; color: white"> Jawaban benar</span><br>
                         <span style="background: red; padding 3px; color: white"> Jawaban salah/peserta </span>
                         <hr>
                         <?php while ($dataRiwayat = mysqli_fetch_assoc($listRiwayatSoal)) { ?>
@@ -57,4 +57,7 @@ require '../layouts/sidebar.php'; ?>
 
 
 <?php require '../layouts/footer.php'; ?>
+<script>
+    $('.MsoListParagraphCxSpFirst').removeClass('MsoListParagraphCxSpFirst');
+</script>
 <?php require '../layouts/close.php'; ?>

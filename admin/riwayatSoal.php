@@ -34,7 +34,7 @@ require '../layouts/sidebar.php'; ?>
                                 }
                                 $dataRiwayat['isi_soal'] = str_replace($dataRiwayat['kunci_soal'] . ". ", "<b style='background:green; color:white'>" . $dataRiwayat['kunci_soal'] . ". </b>", $dataRiwayat['isi_soal']);
                                 ?>
-                                <?php echo $dataRiwayat['state'] + 1 . ". " . ltrim($dataRiwayat['isi_soal'], '<p>'); ?>
+                                <p class="lead"><?php echo $dataRiwayat['state'] + 1 . ". " . ltrim($dataRiwayat['isi_soal']); ?> </p>
                                 <hr>
                             </div>
                         <?php } ?>
@@ -47,4 +47,7 @@ require '../layouts/sidebar.php'; ?>
 
 
 <?php require '../layouts/footer.php'; ?>
+<script>
+    $('.MsoListParagraphCxSpFirst').removeClass('MsoListParagraphCxSpFirst');
+</script>
 <?php require '../layouts/close.php'; ?>
