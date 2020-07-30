@@ -36,6 +36,7 @@ require '../function/checkDaftarTes.php' ?>
                 <div class="card">
                     <div class="card-body">
                         <h4 class="header-title">Daftar tes tersedia</h4>
+                        <p class="mt-0">Sebelum menegerjakan tes utama, pastikan saudara mengerjakan demo tes terlebih dahulu.</p>
                         <hr>
                         <div class="data-tables">
                             <div class="table-responsive">
@@ -103,7 +104,14 @@ require '../function/checkDaftarTes.php' ?>
                     }
                 },
                 {
-                    data: 'judul',
+                    // data: 'judul',
+                    render: function(data, type, row) {
+                        if (row.kd_judul_tes == '5') {
+                            return row.judul + '<br>(Pilihan jawaban yang bertanda bintang merupakan kunci jawaban yang benar)';
+                        } else {
+                            return row.judul;
+                        }
+                    }
                 },
                 {
                     render: function(data, type, row) {
