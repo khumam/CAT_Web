@@ -21,7 +21,7 @@ require '../function/checkDaftarTes.php' ?>
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body text-center">
-                        <h4 class="header-title">Simak video di bawah ini</h4>
+                        <h4 class="header-title">Simak video di bawah ini sebelum mengerjakan tes</h4>
                         <hr>
                         <iframe width="752" height="380" src="https://www.youtube.com/embed/kkEE9SbgeRA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
