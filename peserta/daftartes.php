@@ -1,7 +1,8 @@
 <?php
 require '../function/check_peserta.php';
 require '../layouts/header.php';
-require '../layouts/sidebar.php'; ?>
+require '../layouts/sidebar.php';
+require '../function/checkDaftarTes.php' ?>
 
 
 <div class="page-title-area">
@@ -16,6 +17,17 @@ require '../layouts/sidebar.php'; ?>
 
 <div class="main-content-inner">
     <div class="sales-report-area mt-5 mb-5">
+        <div class="row mb-4">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h4 class="header-title">Simak video di bawah ini sebelum mengerjakan tes</h4>
+                        <hr>
+                        <iframe width="752" height="380" src="https://www.youtube.com/embed/kkEE9SbgeRA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
@@ -89,13 +101,14 @@ require '../layouts/sidebar.php'; ?>
                 },
                 {
                     data: 'judul',
-                    // render: function(data, type, row) {
-                    //     return "<p class='page-title'>" + row.judul + "</p>";
-                    // }
                 },
                 {
                     render: function(data, type, row) {
-                        return "<div class='btn-group text-center'><button data-id='" + row.kd_judul_tes + "' data-waktu='" + row.waktu + "' class='btn btn-xs btn-success btn-kerjakan'>Kerjakan</button></div>";
+                        if (row.kd_judul_tes == '4') {
+                            return "<div class='btn-group text-center'><button <?php echo ($checkDaftarTes == null) ? 'disabled' : '' ?>  data-id='" + row.kd_judul_tes + "' data-waktu='" + row.waktu + "' class='btn btn-xs btn-success btn-kerjakan'>Kerjakan</button></div>";
+                        } else {
+                            return "<div class='btn-group text-center'><button data-id='" + row.kd_judul_tes + "' data-waktu='" + row.waktu + "' class='btn btn-xs btn-success btn-kerjakan'>Kerjakan</button></div>";
+                        }
                     }
                 }
             ]
