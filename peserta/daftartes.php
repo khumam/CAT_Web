@@ -20,10 +20,13 @@ require '../function/checkDaftarTes.php' ?>
         <div class="row mb-4">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-body text-center">
-                        <h4 class="header-title">Simak video di bawah ini sebelum mengerjakan tes</h4>
+                    <div class="card-body">
+                        <h4 class="header-title">Simak video tutorial terlebih dahulu</h4>
                         <hr>
-                        <iframe width="752" height="380" src="https://www.youtube.com/embed/kkEE9SbgeRA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe id='videoplayer'>
+                        <div class="text-center">
+                            <iframe width="752" height="380" src="https://www.youtube.com/embed/kkEE9SbgeRA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe id='videoplayer'>
+                        </div>
+                        <!-- <p class="lead">Pastikan saudara juga sudah melihat tutorial CAT <a href="http://localhost/newcat/peserta/tutorial.php">Di sini</a> </p> -->
                     </div>
                 </div>
             </div>
@@ -107,7 +110,7 @@ require '../function/checkDaftarTes.php' ?>
                         if (row.kd_judul_tes == '4') {
                             return "<div class='btn-group text-center'><button <?php echo ($checkDaftarTes == null) ? 'disabled' : '' ?>  data-id='" + row.kd_judul_tes + "' data-waktu='" + row.waktu + "' class='btn btn-xs btn-success btn-kerjakan'>Kerjakan</button></div>";
                         } else {
-                            return "<div class='btn-group text-center'><button <?php echo ($checkDaftarTes == null) ? 'disabled' : '' ?> id='btn-demo' data-id='" + row.kd_judul_tes + "' data-waktu='" + row.waktu + "' class='btn btn-xs btn-success btn-kerjakan'>Kerjakan</button></div>";
+                            return "<div class='btn-group text-center'><button id='btn-demo' data-id='" + row.kd_judul_tes + "' data-waktu='" + row.waktu + "' class='btn btn-xs btn-success btn-kerjakan'>Kerjakan</button></div>";
                         }
                     }
                 }
@@ -138,18 +141,16 @@ require '../function/checkDaftarTes.php' ?>
         })
     });
 
-    <?php if ($checkDaftarTes == null) { ?>
-        $(document).ready(function() {
-            var timeSpent = 0;
-            var doUpdate = function() {
-                timeSpent = timeSpent + 1;
-                if (timeSpent > 660) {
-                    $('#btn-demo').prop('disabled', false);
-                }
-            };
-            setInterval(doUpdate, 1000);
-        });
-    <?php } ?>
+    // $(document).ready(function() {
+    //     var timeSpent = 0;
+    //     var doUpdate = function() {
+    //         timeSpent = timeSpent + 1;
+    //         if (timeSpent > 660) {
+    //             $('#btn-demo').prop('disabled', false);
+    //         }
+    //     };
+    //     setInterval(doUpdate, 1000);
+    // });
 </script>
 
 <?php require '../layouts/close.php'; ?>
