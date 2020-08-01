@@ -216,6 +216,7 @@ if ($nilaiAkhirPeserta <= 0) {
             },
             options: {
                 responsive: true,
+                animation: false,
                 scales: {
                     xAxes: [{
                         display: true,
@@ -343,6 +344,7 @@ if ($nilaiAkhirPeserta <= 0) {
             },
             options: {
                 responsive: true,
+                animation: false,
                 scales: {
                     xAxes: [{
                         display: true,
@@ -427,13 +429,13 @@ if ($nilaiAkhirPeserta <= 0) {
         skorgraph(<?php echo count($stateSoal); ?>);
     });
 
-    $('#kesulitan-range').on('change', function() {
+    $('#kesulitan-range').on('input', function() {
         const val = $(this).val();
         const totalData = <?php echo count($stateSoal); ?>;
         var arrayYangDitampilkan = Math.round((val / 100) * totalData);
         kesulitangraph(arrayYangDitampilkan);
     });
-    $('#skor-range').on('change', function() {
+    $('#skor-range').on('input', function() {
         const val = $(this).val();
         const totalData = <?php echo count($stateSoal); ?>;
         var arrayYangDitampilkan = Math.round((val / 100) * totalData);
