@@ -143,7 +143,6 @@ require '../layouts/sidebar.php'; ?>
                         $('#nomorSiswa').html(nomor);
                         $('#detailModal').modal('show');
                     }
-                    console.log(data);
                 }
             });
         });

@@ -108,7 +108,7 @@ require '../layouts/sidebar.php'; ?>
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row mb-3">
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
@@ -117,6 +117,9 @@ require '../layouts/sidebar.php'; ?>
                         <div style="height: 30%;">
                             <canvas id="hasilTestChart"></canvas>
                         </div>
+                    </div>
+                    <div class="card-footer">
+                        <input type="range" min='0' max='100' value="100" class="form-control" id='kesulitan-range'>
                     </div>
                 </div>
             </div>
@@ -131,6 +134,9 @@ require '../layouts/sidebar.php'; ?>
                             <canvas id="hasilTestChartSkor"></canvas>
                         </div>
                     </div>
+                    <div class="card-footer">
+                        <input type="range" min='0' max='100' value="100" class="form-control" id='skor-range'>
+                    </div>
                 </div>
             </div>
         </div>
@@ -138,7 +144,6 @@ require '../layouts/sidebar.php'; ?>
 </div>
 
 <?php
-
 $stateSoalFix = implode(',', $stateSoal);
 $kesulitanFix = implode(',', $kesulitanSoal);
 $nilaiAkhirPeserta = round(50 + ((50 / 3) * $dataNilai['teta_jawab']), 2);
@@ -148,8 +153,10 @@ if ($nilaiAkhirPeserta <= 0) {
         return 0;
     }, $skorTiapSoal);
     $skorFix = implode(',', $skorFixArray);
+    $skorReady = $skorFixArray;
 } else {
     $skorFix = implode(',', $skorTiapSoal);
+    $skorReady = $skorTiapSoal;
 }
 
 ?>
@@ -161,7 +168,7 @@ if ($nilaiAkhirPeserta <= 0) {
 
 
 <script>
-    $(document).ready(function() {
+    function kesulitangraph(totalTampilData) {
 
         <?php if ($nilaiAkhirPeserta >= 73) {
             echo "var warnaBatas = 'green';";
@@ -174,6 +181,12 @@ if ($nilaiAkhirPeserta <= 0) {
             echo "var ketBatas = 'Rendah';";
         } ?>
 
+        var dataAWal = [<?php echo $kesulitanFix; ?>];
+        var totalData = <?php echo count($kesulitanSoal); ?>;
+        for (var index = 0; index < (totalData - totalTampilData); index++) {
+            dataAWal.pop();
+        }
+
         var chart = $('#hasilTestChart');
         var result = new Chart(chart, {
             type: 'line',
@@ -181,7 +194,7 @@ if ($nilaiAkhirPeserta <= 0) {
                 labels: [<?php echo $stateSoalFix; ?>],
                 datasets: [{
                         label: 'Kesulitan ',
-                        data: [<?php echo $kesulitanFix; ?>],
+                        data: dataAWal,
                         borderColor: '#FF6384',
                         fill: false,
                         lineTension: 0
@@ -190,7 +203,7 @@ if ($nilaiAkhirPeserta <= 0) {
                         label: 'Tingkat Kemampuan Peserta (Baik)',
                         backgroundColor: 'green',
                     },
-                    
+
                     {
                         label: 'Tingkat Kemampuan Peserta (Sedang)',
                         backgroundColor: 'yellow',
@@ -281,11 +294,9 @@ if ($nilaiAkhirPeserta <= 0) {
             },
 
         });
-    });
-</script>
-<script>
-    $(document).ready(function() {
+    }
 
+    function skorgraph(totalTampilData) {
         <?php if ($nilaiAkhirPeserta >= 73) {
             echo "var warnaBatas = 'green';";
             echo "var ketBatas = 'Tinggi';";
@@ -297,6 +308,12 @@ if ($nilaiAkhirPeserta <= 0) {
             echo "var ketBatas = 'Rendah';";
         } ?>
 
+        var dataAWal = [<?php echo $skorFix; ?>];
+        var totalData = <?php echo count($skorReady); ?>;
+        for (var index = 0; index < (totalData - totalTampilData); index++) {
+            dataAWal.pop();
+        }
+
         var chart = $('#hasilTestChartSkor');
         var result = new Chart(chart, {
             type: 'line',
@@ -304,7 +321,7 @@ if ($nilaiAkhirPeserta <= 0) {
                 labels: [<?php echo $stateSoalFix; ?>],
                 datasets: [{
                         label: 'Skor ',
-                        data: [<?php echo $skorFix; ?>],
+                        data: dataAWal,
                         borderColor: '#2980b9',
                         fill: false,
                         lineTension: 0
@@ -313,7 +330,7 @@ if ($nilaiAkhirPeserta <= 0) {
                         label: 'Tingkat Kemampuan Peserta (Baik)',
                         backgroundColor: 'green',
                     },
-                    
+
                     {
                         label: 'Tingkat Kemampuan Peserta (Sedang)',
                         backgroundColor: 'yellow',
@@ -403,6 +420,24 @@ if ($nilaiAkhirPeserta <= 0) {
 
             },
         });
+    }
+
+    $(document).ready(function() {
+        kesulitangraph(<?php echo count($stateSoal); ?>);
+        skorgraph(<?php echo count($stateSoal); ?>);
+    });
+
+    $('#kesulitan-range').on('change', function() {
+        const val = $(this).val();
+        const totalData = <?php echo count($stateSoal); ?>;
+        var arrayYangDitampilkan = Math.round((val / 100) * totalData);
+        kesulitangraph(arrayYangDitampilkan);
+    });
+    $('#skor-range').on('change', function() {
+        const val = $(this).val();
+        const totalData = <?php echo count($stateSoal); ?>;
+        var arrayYangDitampilkan = Math.round((val / 100) * totalData);
+        skorgraph(arrayYangDitampilkan);
     });
 </script>
 <?php require '../layouts/close.php'; ?>
