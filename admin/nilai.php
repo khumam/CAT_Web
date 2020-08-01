@@ -181,10 +181,10 @@ if ($nilaiAkhirPeserta <= 0) {
             echo "var ketBatas = 'Rendah';";
         } ?>
 
-        var dataAWal = [<?php echo $kesulitanFix; ?>];
+        var dataAwal = [<?php echo $kesulitanFix; ?>];
         var totalData = <?php echo count($kesulitanSoal); ?>;
         for (var index = 0; index < (totalData - totalTampilData); index++) {
-            dataAWal.pop();
+            dataAwal.pop();
         }
 
         var chart = $('#hasilTestChart');
@@ -194,7 +194,7 @@ if ($nilaiAkhirPeserta <= 0) {
                 labels: [<?php echo $stateSoalFix; ?>],
                 datasets: [{
                         label: 'Kesulitan ',
-                        data: dataAWal,
+                        data: dataAwal,
                         borderColor: '#FF6384',
                         fill: false,
                         lineTension: 0
@@ -254,7 +254,7 @@ if ($nilaiAkhirPeserta <= 0) {
                         id: 'lineBatasKemampuan',
                         mode: 'horizontal',
                         scaleID: 'y-axis-0',
-                        value: <?php echo round((float) $dataNilai['teta_jawab'], 3); ?>,
+                        value: dataAwal[dataAwal.length - 1],
                         borderColor: warnaBatas,
                         borderWidth: 1,
                         label: {
@@ -309,10 +309,10 @@ if ($nilaiAkhirPeserta <= 0) {
             echo "var ketBatas = 'Rendah';";
         } ?>
 
-        var dataAWal = [<?php echo $skorFix; ?>];
+        var dataAwal = [<?php echo $skorFix; ?>];
         var totalData = <?php echo count($skorReady); ?>;
         for (var index = 0; index < (totalData - totalTampilData); index++) {
-            dataAWal.pop();
+            dataAwal.pop();
         }
 
         var chart = $('#hasilTestChartSkor');
@@ -322,7 +322,7 @@ if ($nilaiAkhirPeserta <= 0) {
                 labels: [<?php echo $stateSoalFix; ?>],
                 datasets: [{
                         label: 'Skor ',
-                        data: dataAWal,
+                        data: dataAwal,
                         borderColor: '#2980b9',
                         fill: false,
                         lineTension: 0
@@ -381,7 +381,7 @@ if ($nilaiAkhirPeserta <= 0) {
                         id: 'lineBatasKemampuan',
                         mode: 'horizontal',
                         scaleID: 'y-axis-0',
-                        value: <?php echo round(50 + ((50 / 3) * $dataNilai['teta_jawab']), 2); ?>,
+                        value: dataAwal[dataAwal.length - 1],
                         borderColor: warnaBatas,
                         borderWidth: 1,
                         label: {
