@@ -24,7 +24,7 @@ require '../function/checkDaftarTes.php' ?>
                         <h4 class="header-title">Simak video tutorial terlebih dahulu</h4>
                         <hr>
                         <div class="text-center">
-                            <iframe width="752" height="380" src="https://www.youtube.com/embed/kkEE9SbgeRA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe id='videoplayer'>
+                            <iframe width="752" height="380" src="https://www.youtube.com/embed/-sEpien8pQg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe id='videoplayer'>
                         </div>
                         <!-- <p class="lead">Pastikan saudara juga sudah melihat tutorial CAT <a href="http://localhost/newcat/peserta/tutorial.php">Di sini</a> </p> -->
                     </div>
