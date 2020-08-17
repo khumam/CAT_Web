@@ -17,70 +17,100 @@ require '../function/getNilai.php'; ?>
 </head>
 
 <body>
-
-    <div class="row mt-5">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-body">
-                    <h4><?php echo $getSiswa['nama_user']; ?> (<?php echo $getSiswa['nomor_user']; ?>)</h4>
-                    <h6><?php echo $getTes['judul']; ?></h6>
-                    <hr>
+    <div class="container">
+        <div class="row mt-5 mb-5">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4><?php echo $getSiswa['nama_user']; ?> (<?php echo $getSiswa['nomor_user']; ?>)</h4>
+                        <h6><?php echo $getTes['judul']; ?></h6>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4>Hasil tes</h4>
+                        <hr>
+                        <div class="data-tables">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered">
+                                    <thead class="text-center">
+                                        <th style="width:12px">No</th>
+                                        <th>Kode Soal</th>
+                                        <th>Skor</th>
+                                        <th>b</th>
+                                        <th>θ awal</th>
+                                        <th>θ jawab</th>
+                                        <th>Pi(θ)</th>
+                                        <th>Q(θ)</th>
+                                        <th>IIF</th>
+                                        <th>SE(θ)</th>
+                                        <th>Selisih SE</th>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        $i = 1;
+                                        $stateSoal = [];
+                                        $kesulitanSoal = [];
+                                        $skorTiapSoal = [];
+                                        $waktuSoal = [];
+                                        while ($row = mysqli_fetch_assoc($getNilai)) { ?>
+                                            <tr>
+                                                <td><?php echo $i++; ?></td>
+                                                <td><?php echo $row['id_soal']; ?></td>
+                                                <td><?php echo $row['skor']; ?></td>
+                                                <td><?php echo $row['kesulitan']; ?></td>
+                                                <td><?php echo $row['teta_awal']; ?></td>
+                                                <td><?php echo $row['teta_jawab']; ?></td>
+                                                <td><?php echo round($row['p_teta'], 3); ?></td>
+                                                <td><?php echo round($row['q_teta'], 3); ?></td>
+                                                <td><?php echo round($row['iif'], 3); ?></td>
+                                                <td><?php echo round((float) $row['se_teta'], 4); ?></td>
+                                                <td><?php echo round((float) $row['selisih_se'], 4); ?></td>
+                                                <?php $stateSoal[] =  $row['state'] + 1; ?>
+                                                <?php $kesulitanSoal[] =  $row['kesulitan']; ?>
+                                                <?php $waktuSoal[] =  $row['waktusoal']; ?>
+                                                <?php $skorTiapSoal[] =  round(50 + ((50 / 3) * $row['teta_jawab']), 2); ?>
+                                            </tr>
+                                        <?php } ?>
+                                        <tr>
+                                            <td colspan="3">θ Akhir</td>
+                                            <td colspan="8"><?php echo round((float) $dataNilai['teta_jawab'], 3); ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3">Skor</td>
+                                            <td colspan="8"><?php echo round(50 + ((50 / 3) * $dataNilai['teta_jawab']), 2); ?></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-body">
-                    <h4>Hasil tes</h4>
-                    <hr>
-                    <div class="data-tables">
+
+        <div class="row mb-5">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4>Statistik soal</h4>
+                        <hr>
                         <div class="table-responsive">
-                            <table class="table table-striped table-bordered">
-                                <thead class="text-center">
-                                    <th style="width:12px">No</th>
-                                    <th>Kode Soal</th>
-                                    <th>Skor</th>
-                                    <th>b</th>
-                                    <th>θ awal</th>
-                                    <th>θ jawab</th>
-                                    <th>Pi(θ)</th>
-                                    <th>Q(θ)</th>
-                                    <th>IIF</th>
-                                    <th>SE(θ)</th>
-                                    <th>Selisih SE</th>
+                            <table class="table table-bordered table-striped">
+                                <thead>
+                                    <th>Tipe soal</th>
+                                    <th>Jumlah</th>
                                 </thead>
                                 <tbody>
-                                    <?php
-                                    $i = 1;
-                                    $stateSoal = [];
-                                    $kesulitanSoal = [];
-                                    $skorTiapSoal = [];
-                                    while ($row = mysqli_fetch_assoc($getNilai)) { ?>
+                                    <?php while ($dataTipeSoal = mysqli_fetch_assoc($getTipeSoal)) { ?>
                                         <tr>
-                                            <td><?php echo $i++; ?></td>
-                                            <td><?php echo $row['id_soal']; ?></td>
-                                            <td><?php echo $row['skor']; ?></td>
-                                            <td><?php echo $row['kesulitan']; ?></td>
-                                            <td><?php echo $row['teta_awal']; ?></td>
-                                            <td><?php echo $row['teta_jawab']; ?></td>
-                                            <td><?php echo round($row['p_teta'], 3); ?></td>
-                                            <td><?php echo round($row['q_teta'], 3); ?></td>
-                                            <td><?php echo round($row['iif'], 3); ?></td>
-                                            <td><?php echo round((float) $row['se_teta'], 4); ?></td>
-                                            <td><?php echo round((float) $row['selisih_se'], 4); ?></td>
-                                            <?php $stateSoal[] =  $row['state'] + 1; ?>
-                                            <?php $kesulitanSoal[] =  $row['kesulitan']; ?>
-                                            <?php $skorTiapSoal[] =  round(50 + ((50 / 3) * $row['teta_jawab']), 2); ?>
+                                            <td><?php echo $dataTipeSoal['tipe']; ?></td>
+                                            <td><?php echo $dataTipeSoal['totalTipe']; ?></td>
                                         </tr>
                                     <?php } ?>
-                                    <tr>
-                                        <td colspan="3">θ Akhir</td>
-                                        <td colspan="8"><?php echo round((float) $dataNilai['teta_jawab'], 3); ?></td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="3">Skor</td>
-                                        <td colspan="8"><?php echo round(50 + ((50 / 3) * $dataNilai['teta_jawab']), 2); ?></td>
-                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -88,66 +118,52 @@ require '../function/getNilai.php'; ?>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="row">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-body">
-                    <h4>Statistik soal</h4>
-                    <hr>
-                    <div class="table-responsive">
-                        <table class="table table-bordered table-striped">
-                            <thead>
-                                <th>Tipe soal</th>
-                                <th>Jumlah</th>
-                            </thead>
-                            <tbody>
-                                <?php while ($dataTipeSoal = mysqli_fetch_assoc($getTipeSoal)) { ?>
-                                    <tr>
-                                        <td><?php echo $dataTipeSoal['tipe']; ?></td>
-                                        <td><?php echo $dataTipeSoal['totalTipe']; ?></td>
-                                    </tr>
-                                <?php } ?>
-                            </tbody>
-                        </table>
+        <div class="row mb-5">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4>Kesulitan soal</h4>
+                        <hr>
+                        <div style="height: 10%;">
+                            <canvas id="hasilTestChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-5">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4>Grafik skor</h4>
+                        <hr>
+                        <div style="height: 10%;">
+                            <canvas id="hasilTestChartSkor"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-5">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4>Grafik Kecepatan Pengerjaan</h4>
+                        <hr>
+                        <div style="height: 10%;">
+                            <canvas id="hasilTestChartWaktu"></canvas>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <div class="row mb-5">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-body">
-                    <h4>Kesulitan soal</h4>
-                    <hr>
-                    <div style="height: 400px;">
-                        <canvas id="hasilTestChart"></canvas>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row mb-5">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-body">
-                    <h4>Grafik skor</h4>
-                    <hr>
-                    <div style="height: 400px;">
-                        <canvas id="hasilTestChartSkor"></canvas>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <?php
 
     $stateSoalFix = implode(',', $stateSoal);
     $kesulitanFix = implode(',', $kesulitanSoal);
+    $waktuFix = implode(',', $waktuSoal);
     $nilaiAkhirPeserta = round(50 + ((50 / 3) * $dataNilai['teta_jawab']), 2);
 
     if ($nilaiAkhirPeserta <= 0) {
@@ -201,7 +217,7 @@ require '../function/getNilai.php'; ?>
                             label: 'Tingkat Kemampuan Peserta (Baik)',
                             backgroundColor: 'green',
                         },
-                        
+
                         {
                             label: 'Tingkat Kemampuan Peserta (Sedang)',
                             backgroundColor: 'yellow',
@@ -297,7 +313,7 @@ require '../function/getNilai.php'; ?>
                             label: 'Tingkat Kemampuan Peserta (Baik)',
                             backgroundColor: 'green',
                         },
-                        
+
                         {
                             label: 'Tingkat Kemampuan Peserta (Sedang)',
                             backgroundColor: 'yellow',
@@ -363,6 +379,89 @@ require '../function/getNilai.php'; ?>
                 },
             });
         });
+    </script>
+    <script>
+        $(document).ready(function() {
+
+            var chart = $('#hasilTestChartWaktu');
+            var result = new Chart(chart, {
+                type: 'line',
+                data: {
+                    labels: [<?php echo $stateSoalFix; ?>],
+                    datasets: [{
+                            label: 'Kecepatan ',
+                            data: [<?php echo $waktuFix; ?>],
+                            borderColor: '#2980b9',
+                            fill: false,
+                            lineTension: 0
+                        },
+                        {
+                            label: 'Kecepatan Lama',
+                            backgroundColor: 'yellow',
+                        },
+
+                        {
+                            label: 'Kecepatan Sedang',
+                            backgroundColor: 'green',
+                        },
+                        {
+                            label: 'Kecepatan Cepat',
+                            backgroundColor: 'red',
+                        }
+                    ],
+                },
+                options: {
+                    responsive: true,
+                    animation: false,
+                    scales: {
+                        xAxes: [{
+                            display: true,
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'Butir-butir soal yang dikerjakan'
+                            }
+                        }],
+                        yAxes: [{
+                            display: true,
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'Kecepatan Pengerjaan (detik)'
+                            },
+                            ticks: {
+                                callback: function(value, index, values) {
+                                    if (index == 0) {
+                                        return 'Lama   ' + value;
+                                    } else if (index == 10) {
+                                        return 'Cepat   ' + value;
+                                    } else {
+                                        return value;
+                                    }
+                                },
+                                max: 200,
+                                min: 0
+                            }
+                        }]
+                    },
+                    annotation: {
+                        drawTime: 'afterDatasetsDraw',
+                        annotations: [{
+                            type: 'line',
+                            id: 'lineBatasKecepatan',
+                            mode: 'horizontal',
+                            scaleID: 'y-axis-0',
+                            value: <?php echo end($waktuSoal); ?>,
+                            borderColor: '#000',
+                            borderWidth: 1,
+                            label: {
+                                enabled: false,
+                                yAdjust: -20,
+                                content: 'Kecepatan Pengerjaan peserta'
+                            }
+                        }]
+                    },
+                },
+            });
+        })
     </script>
 
     <script>

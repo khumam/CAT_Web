@@ -48,6 +48,7 @@ require '../layouts/sidebar.php'; ?>
                                         $stateSoal = [];
                                         $kesulitanSoal = [];
                                         $skorTiapSoal = [];
+                                        $waktuSoal = [];
                                         while ($row = mysqli_fetch_assoc($getNilai)) { ?>
                                             <tr>
                                                 <td><?php echo $i++; ?></td>
@@ -63,6 +64,7 @@ require '../layouts/sidebar.php'; ?>
                                                 <td><?php echo round($row['selisih_se'], 4); ?></td>
                                                 <?php $stateSoal[] =  $row['state'] + 1; ?>
                                                 <?php $kesulitanSoal[] =  $row['kesulitan']; ?>
+                                                <?php $waktuSoal[] =  $row['waktusoal']; ?>
                                                 <?php $skorTiapSoal[] =  round(50 + ((50 / 3) * $row['teta_jawab']), 2); ?>
                                             </tr>
                                         <?php } ?>
@@ -124,7 +126,7 @@ require '../layouts/sidebar.php'; ?>
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row mb-3">
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
@@ -140,12 +142,29 @@ require '../layouts/sidebar.php'; ?>
                 </div>
             </div>
         </div>
+        <div class="row mb-3">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4>Grafik kecepatan pengerjaan soal</h4>
+                        <hr>
+                        <div style="height: 30%;">
+                            <canvas id="hasilTestChartWaktu"></canvas>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <input type="range" min='0' max='100' value="100" class="form-control" id='waktu-range'>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
 <?php
 $stateSoalFix = implode(',', $stateSoal);
 $kesulitanFix = implode(',', $kesulitanSoal);
+$waktuFix = implode(',', $waktuSoal);
 $nilaiAkhirPeserta = round(50 + ((50 / 3) * $dataNilai['teta_jawab']), 2);
 
 if ($nilaiAkhirPeserta <= 0) {
@@ -424,9 +443,138 @@ if ($nilaiAkhirPeserta <= 0) {
         });
     }
 
+    function waktugraph(totalTampilData) {
+
+        var dataAwal = [<?php echo $waktuFix; ?>];
+        var totalData = <?php echo count($waktuSoal); ?>;
+        for (var index = 0; index < (totalData - totalTampilData); index++) {
+            dataAwal.pop();
+        }
+
+        if (dataAwal[totalTampilData - 1] < 10) {
+            var warnaBatas = 'red';
+            var ketBatas = 'Cepat';
+        } else if (dataAwal[totalTampilData - 1] > 10 && dataAwal[totalTampilData - 1] < 160) {
+            var warnaBatas = 'green';
+            var ketBatas = 'Normal';
+        } else if (dataAwal[totalTampilData - 1] > 160) {
+            var warnaBatas = 'yellow';
+            var ketBatas = 'Lama';
+        }
+
+        var chart = $('#hasilTestChartWaktu');
+        var result = new Chart(chart, {
+            type: 'line',
+            data: {
+                labels: [<?php echo $stateSoalFix; ?>],
+                datasets: [{
+                        label: 'Kecepatan ',
+                        data: dataAwal,
+                        borderColor: '#2980b9',
+                        fill: false,
+                        lineTension: 0
+                    },
+                    {
+                        label: 'Kecepatan Lama',
+                        backgroundColor: 'yellow',
+                    },
+
+                    {
+                        label: 'Kecepatan Sedang',
+                        backgroundColor: 'green',
+                    },
+                    {
+                        label: 'Kecepatan Cepat',
+                        backgroundColor: 'red',
+                    }
+                ],
+            },
+            options: {
+                responsive: true,
+                animation: false,
+                scales: {
+                    xAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Butir-butir soal yang dikerjakan'
+                        }
+                    }],
+                    yAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Kecepatan Pengerjaan (detik)'
+                        },
+                        ticks: {
+                            callback: function(value, index, values) {
+                                if (index == 0) {
+                                    return 'Lama   ' + value;
+                                } else if (index == 10) {
+                                    return 'Cepat   ' + value;
+                                } else {
+                                    return value;
+                                }
+                            },
+                            max: 200,
+                            min: 0
+                        }
+                    }]
+                },
+                annotation: {
+                    drawTime: 'afterDatasetsDraw',
+                    annotations: [{
+                        type: 'line',
+                        id: 'lineBatasKecepatan',
+                        mode: 'horizontal',
+                        scaleID: 'y-axis-0',
+                        value: dataAwal[dataAwal.length - 1],
+                        borderColor: warnaBatas,
+                        borderWidth: 1,
+                        label: {
+                            enabled: false,
+                            yAdjust: -20,
+                            content: 'Kecepatan Pengerjaan peserta'
+                        }
+                    }]
+                },
+                tooltips: {
+                    callbacks: {
+                        label: function(data) {
+                            var keterangan = ['Kecepatan : ' + Number(data.yLabel) + ' detik'];
+                            var tipeSoal = function() {
+                                var tmpTipe = null;
+                                $.ajax({
+                                    async: false,
+                                    url: '../function/getTipeSoal.php',
+                                    method: 'POST',
+                                    data: {
+                                        getTipeSoalChart: true,
+                                        idsiswa: "<?php echo $idsiswa; ?>",
+                                        idkodesoal: "<?php echo $idkodesoal; ?>",
+                                        sessionid: "<?php echo $sessionid; ?>",
+                                        state: Number(data.xLabel) - 1,
+                                    },
+                                    success: function(response) {
+                                        tmpTipe = response;
+                                    }
+                                });
+                                return tmpTipe;
+                            }();
+                            keterangan.push('Tipe soal : ' + tipeSoal);
+                            return keterangan;
+                        }
+                    }
+                },
+
+            },
+        });
+    }
+
     $(document).ready(function() {
         kesulitangraph(<?php echo count($stateSoal); ?>);
         skorgraph(<?php echo count($stateSoal); ?>);
+        waktugraph(<?php echo count($stateSoal); ?>);
     });
 
     $('#kesulitan-range').on('input', function() {
@@ -440,6 +588,12 @@ if ($nilaiAkhirPeserta <= 0) {
         const totalData = <?php echo count($stateSoal); ?>;
         var arrayYangDitampilkan = Math.round((val / 100) * totalData);
         skorgraph(arrayYangDitampilkan);
+    });
+    $('#waktu-range').on('input', function() {
+        const val = $(this).val();
+        const totalData = <?php echo count($stateSoal); ?>;
+        var arrayYangDitampilkan = Math.round((val / 100) * totalData);
+        waktugraph(arrayYangDitampilkan);
     });
 </script>
 <?php require '../layouts/close.php'; ?>
