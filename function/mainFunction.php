@@ -21,7 +21,7 @@ if (isset($_SESSION['testIsDone'])) {
         $getSoal = "SELECT * FROM cat_soal WHERE kd_soal = $id_soal";
         $dataSoal = mysqli_query($db, $getSoal);
         $dataSoal = mysqli_fetch_assoc($dataSoal);
-
+        $_SESSION['waktu-jawab-per-soal'] = $_POST['waktu-soal'];
 
         if ($dataSoal['kunci_soal'] == $jawaban) {
             // SETTING JAWAB BENAR
@@ -95,6 +95,7 @@ if (isset($_GET['waktuHabis'])) {
         $_SESSION['sign'] = '<';
         $_SESSION['jawabanPeserta'] = null;
         $_SESSION['tipe_sebelumnya'] = '0';
+        $_SESSION['waktu-jawab-per-soal'] = $_SESSION['timeDuration'] * 60;
 
         if ($_SESSION['state'] == 0) {
             $_SESSION['selisih_se'][$_SESSION['state']] = countSe($_SESSION['iif']);
@@ -130,12 +131,13 @@ function saveHasil()
     $session_id = $_SESSION['session_id'];
     $id_tes = $_SESSION['kd_judul_tes'];
     $jawab = $_SESSION['jawabanPeserta'];
+    $waktusoal = $_SESSION['waktu-jawab-per-soal'];
 
     $getKesulitan = "SELECT tingkat_kesulitan FROM cat_soal WHERE kd_soal = $id_soal";
     $queryKesulitan = mysqli_fetch_assoc(mysqli_query($db, $getKesulitan));
     $kesulitanSoalKini = $queryKesulitan['tingkat_kesulitan'];
 
-    $sql = "INSERT INTO cat_hasil (`state`, id_soal, id_tes, id_user, jawab, kesulitan, skor, teta_awal, teta_jawab, p_teta, q_teta, `iif`, se_teta, selisih_se, `session_id`) VALUES ('$state', '$id_soal', '$id_tes','$id_user', '$jawab',  '$kesulitanSoalKini', '$skor', '$teta_awal', '$teta_jawab', '$p_teta', '$q_teta', '$iif', '$se_teta', '$selisih_se', '$session_id')";
+    $sql = "INSERT INTO cat_hasil (`state`, id_soal, id_tes, id_user, jawab, kesulitan, skor, teta_awal, teta_jawab, p_teta, q_teta, `iif`, se_teta, selisih_se, waktusoal, `session_id`) VALUES ('$state', '$id_soal', '$id_tes','$id_user', '$jawab',  '$kesulitanSoalKini', '$skor', '$teta_awal', '$teta_jawab', '$p_teta', '$q_teta', '$iif', '$se_teta', '$selisih_se', '$waktusoal', '$session_id')";
     $query = mysqli_query($db, $sql);
 
     $_SESSION['kesulitan'] = $kesulitanSoalKini;

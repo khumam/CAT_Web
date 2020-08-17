@@ -148,17 +148,6 @@ require '../function/checkDaftarTes.php' ?>
 
         })
     });
-
-    // $(document).ready(function() {
-    //     var timeSpent = 0;
-    //     var doUpdate = function() {
-    //         timeSpent = timeSpent + 1;
-    //         if (timeSpent > 660) {
-    //             $('#btn-demo').prop('disabled', false);
-    //         }
-    //     };
-    //     setInterval(doUpdate, 1000);
-    // });
 </script>
 
 <?php require '../layouts/close.php'; ?>
