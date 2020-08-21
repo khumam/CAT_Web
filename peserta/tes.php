@@ -6,6 +6,8 @@ require '../layouts/sidebar.php';
 require '../function/getNilaiReal.php';
 ?>
 
+
+
 <div class="page-title-area">
     <div class="row align-items-center">
         <div class="col-sm-6 py-3">
@@ -41,6 +43,8 @@ require '../function/getNilaiReal.php';
                             <div class="container p-3" id="soal">
                             </div>
                             <input type="hidden" id='waktu-soal' name='waktu-soal'>
+                            <input type="hidden" id="kesulitan-soal-ini">
+                            <input type="hidden" id="jenis-soal-ini">
                         </form>
                         <button class="mt-3 btn btn-success" id="submit" name="tombol-next" form="formSoal">Selanjutnya</button>
                     </div>
@@ -122,9 +126,10 @@ $skorSiswa =  round(50 + ((50 / 3) * $_SESSION['teta_jawab']), 2);
                 sign: "<?php echo $_SESSION['sign']; ?>"
             },
             success: function(response) {
-                console.log(response);
                 if (typeof(response.isi_soal) != "undefined" && response.isi_soal !== null) {
                     var soal = response.isi_soal;
+                    $('#kesulitan-soal-ini').val(response.tingkat_kesulitan);
+                    $('#jenis-soal-ini').val(response.tipe);
                     soal = soal.replace("A. ", "<table style='margin-top: 2em; width: 100%'><tr><td style='padding: 1em'><input type='radio' value='A' name='jawaban'> A. ");
                     soal = soal.replace("B. ", "</td></tr><tr><td style='padding: 1em'><input type='radio' value='B' name='jawaban'> B. ");
                     soal = soal.replace("C. ", "</td></tr><tr><td style='padding: 1em'><input type='radio' value='C' name='jawaban'> C. ");
@@ -140,10 +145,6 @@ $skorSiswa =  round(50 + ((50 / 3) * $_SESSION['teta_jawab']), 2);
                 }
             }
         });
-
-        // $('#submit').on('click', function() {
-        //     window.location.reload();
-        // });
 
         function getTimeRemaining(endtime) {
             var t = Date.parse(endtime) - Date.parse(new Date());
@@ -193,116 +194,152 @@ $skorSiswa =  round(50 + ((50 / 3) * $_SESSION['teta_jawab']), 2);
 
     <script>
         $(document).ready(function() {
+            setTimeout(function() {
+                <?php if ($skorSiswa >= 73) {
+                    echo "var warnaBatas='green';";
+                    echo "var ketBatas='Tinggi';";
+                } else if ($skorSiswa >= 50 && $skorSiswa <= 72) {
+                    echo "var warnaBatas='yellow';";
+                    echo "var ketBatas='Sedang';";
+                } else if ($skorSiswa < 50) {
+                    echo "var warnaBatas='red';";
+                    echo "var ketBatas='Rendah';";
+                } ?>
 
-            <?php if ($skorSiswa >= 73) {
-                echo "var warnaBatas='green';";
-                echo "var ketBatas='Tinggi';";
-            } else if ($skorSiswa >= 50 && $skorSiswa <= 72) {
-                echo "var warnaBatas='yellow';";
-                echo "var ketBatas='Sedang';";
-            } else if ($skorSiswa < 50) {
-                echo "var warnaBatas='red';";
-                echo "var ketBatas='Rendah';";
-            } ?>
-
-            var chart = $('#hasilTestChart');
-            var result = new Chart(chart, {
-                type: 'line',
-                data: {
-                    labels: [<?php echo $stateSoalFix; ?>],
-                    datasets: [{
-                            label: 'Kesulitan ',
-                            data: [<?php echo $kesulitanFix; ?>],
-                            borderColor: '#FF6384',
-                            fill: false,
-                            lineTension: 0
-                        },
-                        {
-                            label: 'Tingkat Kemampuan Peserta (' + ketBatas + ")",
-                            backgroundColor: warnaBatas,
-                        }
-                    ],
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    scales: {
-                        xAxes: [{
-                            display: true,
-                            scaleLabel: {
-                                display: true,
-                                labelString: 'Nomor soal'
-                            }
-                        }],
-                        yAxes: [{
-                            display: true,
-                            scaleLabel: {
-                                display: true,
-                                labelString: 'Kesulitan soal'
+                var kesulitanSaatIni = $('#kesulitan-soal-ini').val();
+                var dataKesulitan = [<?php echo $kesulitanFix; ?>];
+                var labels = [<?php echo $stateSoalFix; ?>];
+                dataKesulitan.push(kesulitanSaatIni);
+                labels.push(labels.length + 1);
+                var chart = $('#hasilTestChart');
+                var result = new Chart(chart, {
+                    type: 'line',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                                label: 'Kesulitan ',
+                                data: dataKesulitan,
+                                borderColor: '#FF6384',
+                                fill: false,
+                                lineTension: 0
                             },
-                            ticks: {
-                                callback: function(value, index, values) {
-                                    if (index == 0) {
-                                        return 'Sulit   ' + value;
-                                    } else if (index == 6) {
-                                        return 'Mudah   ' + value;
-                                    } else {
-                                        return value;
-                                    }
+                            {
+                                label: 'Tingkat Kemampuan Peserta (' + ketBatas + ")",
+                                backgroundColor: warnaBatas,
+                            }
+                        ],
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            xAxes: [{
+                                display: true,
+                                scaleLabel: {
+                                    display: true,
+                                    labelString: 'Nomor soal'
+                                }
+                            }],
+                            yAxes: [{
+                                display: true,
+                                scaleLabel: {
+                                    display: true,
+                                    labelString: 'Kesulitan soal'
                                 },
-                                max: 3,
-                                min: -3
-                            }
-                        }]
-                    },
-                    annotation: {
-                        drawTime: 'afterDatasetsDraw',
-                        annotations: [{
-                            type: 'line',
-                            id: 'lineBatasKemampuan',
-                            mode: 'horizontal',
-                            scaleID: 'y-axis-0',
-                            value: <?php echo round((float) $dataNilai['teta_jawab'], 3); ?>,
-                            borderColor: warnaBatas,
-                            borderWidth: 1,
-                            label: {
-                                enabled: false,
-                                position: "right",
-                                content: 'Batas kemampuan'
-                            }
-                        }]
-                    },
-                    tooltips: {
-                        callbacks: {
-                            label: function(data) {
-                                var keterangan = ['Kesulitan : ' + Number(data.yLabel)];
-                                var tipeSoal = function() {
-                                    var tmpTipe = null;
-                                    $.ajax({
-                                        async: false,
-                                        url: '../function/getTipeSoal.php',
-                                        method: 'POST',
-                                        data: {
-                                            getTipeSoalChart: true,
-                                            idsiswa: "<?php echo $idsiswa; ?>",
-                                            idkodesoal: "<?php echo $idkodesoal; ?>",
-                                            sessionid: "<?php echo $sessionid; ?>",
-                                            state: Number(data.xLabel) - 1,
-                                        },
-                                        success: function(response) {
-                                            tmpTipe = response;
+                                ticks: {
+                                    callback: function(value, index, values) {
+                                        if (index == 0) {
+                                            return 'Sulit   ' + value;
+                                        } else if (index == 6) {
+                                            return 'Mudah   ' + value;
+                                        } else {
+                                            return value;
                                         }
-                                    });
-                                    return tmpTipe;
-                                }();
-                                keterangan.push('Tipe soal : ' + tipeSoal);
-                                return keterangan;
+                                    },
+                                    max: 3,
+                                    min: -3
+                                }
+                            }]
+                        },
+                        annotation: {
+                            drawTime: 'afterDatasetsDraw',
+                            annotations: [{
+                                type: 'line',
+                                id: 'lineBatasKemampuan',
+                                mode: 'horizontal',
+                                scaleID: 'y-axis-0',
+                                value: <?php echo round((float) $dataNilai['teta_jawab'], 3); ?>,
+                                borderColor: warnaBatas,
+                                borderWidth: 1,
+                                label: {
+                                    enabled: false,
+                                    position: "right",
+                                    content: 'Batas kemampuan'
+                                }
+                            }]
+                        },
+                        tooltips: {
+                            callbacks: {
+                                label: function(data) {
+                                    var keterangan = ['Kesulitan : ' + Number(data.yLabel)];
+                                    var tipeSoal = function() {
+                                        var tmpTipe = null;
+                                        $.ajax({
+                                            async: false,
+                                            url: '../function/getTipeSoal.php',
+                                            method: 'POST',
+                                            data: {
+                                                getTipeSoalChart: true,
+                                                idsiswa: "<?php echo $idsiswa; ?>",
+                                                idkodesoal: "<?php echo $idkodesoal; ?>",
+                                                sessionid: "<?php echo $sessionid; ?>",
+                                                state: Number(data.xLabel) - 1,
+                                                getTipe: true,
+                                            },
+                                            success: function(response) {
+                                                tmpTipe = response;
+                                            }
+                                        });
+                                        return tmpTipe;
+                                    }();
+                                    var waktuSoal = function() {
+                                        var tmpWaktu = null;
+                                        $.ajax({
+                                            async: false,
+                                            url: '../function/getTipeSoal.php',
+                                            method: 'POST',
+                                            data: {
+                                                getTipeSoalChart: true,
+                                                idsiswa: "<?php echo $idsiswa; ?>",
+                                                idkodesoal: "<?php echo $idkodesoal; ?>",
+                                                sessionid: "<?php echo $sessionid; ?>",
+                                                state: Number(data.xLabel) - 1,
+                                                waktuSoal: true,
+                                            },
+                                            success: function(response) {
+                                                tmpWaktu = response;
+                                            }
+                                        });
+                                        return tmpWaktu;
+                                    }();
+                                    if (tipeSoal != 'null') {
+                                        keterangan.push('Tipe soal : ' + tipeSoal);
+                                    } else {
+                                        keterangan.push('Tipe soal : ' + $('#jenis-soal-ini').val());
+                                    }
+                                    if (waktuSoal != 'null') {
+                                        keterangan.push('Kecepatan : ' + waktuSoal + ' detik');
+                                    } else {
+                                        keterangan.push('Kecepatan : ' + $('#waktu-soal').val() + ' detik');
+                                    }
+                                    return keterangan;
+                                }
                             }
-                        }
-                    },
+                        },
 
-                }
-            });
+                    }
+                });
+            }, 100);
         });
     </script>
     <script>
@@ -319,14 +356,19 @@ $skorSiswa =  round(50 + ((50 / 3) * $_SESSION['teta_jawab']), 2);
                 echo "var ketBatas='Rendah';";
             } ?>
 
+            var labelsskors = [<?php echo $stateSoalFix; ?>];
+            var skors = [<?php echo $skorTiapSoalFix; ?>];
+            <?php if ($_SESSION['state'] == 0) { ?>
+                skors.push(50);
+            <?php } ?>
             var chart = $('#hasilTestChartSkor');
             var result = new Chart(chart, {
                 type: 'line',
                 data: {
-                    labels: [<?php echo $stateSoalFix; ?>],
+                    labels: labelsskors,
                     datasets: [{
                             label: 'Skor ',
-                            data: [<?php echo $skorTiapSoalFix; ?>],
+                            data: skors,
                             borderColor: '#2980b9',
                             fill: false,
                             lineTension: 0
@@ -408,7 +450,11 @@ $skorSiswa =  round(50 + ((50 / 3) * $_SESSION['teta_jawab']), 2);
                                     });
                                     return tmpTipe;
                                 }();
-                                keterangan.push('Tipe soal : ' + tipeSoal);
+                                if (tipeSoal != 'null') {
+                                    keterangan.push('Tipe soal : ' + tipeSoal);
+                                } else {
+                                    keterangan.push('Tipe soal : ' + $('#jenis-soal-ini').val());
+                                }
                                 return keterangan;
                             }
                         }

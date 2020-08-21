@@ -32,10 +32,16 @@ if (isset($_POST['getTipeSoalChart'])) {
     $state = $_POST['state'];
     $cekTipe = '';
 
-    $getTipe = mysqli_query($db, "SELECT h.state, s.tipe FROM `cat_hasil` as h JOIN cat_soal as s ON h.id_soal = s.kd_soal WHERE h.id_user = '$idsiswa' && h.id_tes = '$idkodesoal' && h.session_id = '$sessionid' && h.state = $state LIMIT 1");
+    $getTipe = mysqli_query($db, "SELECT h.state, s.tipe, h.waktuSoal FROM `cat_hasil` as h JOIN cat_soal as s ON h.id_soal = s.kd_soal WHERE h.id_user = '$idsiswa' && h.id_tes = '$idkodesoal' && h.session_id = '$sessionid' && h.state = $state LIMIT 1");
 
     $tipeSoal = mysqli_fetch_assoc($getTipe);
-    $cekTipe = $tipeSoal['tipe'];
+    if (isset($_POST['getTipe'])) {
+        $cekTipe = $tipeSoal['tipe'];
+    } else if (isset($_POST['waktuSoal'])) {
+        $cekTipe = $tipeSoal['waktuSoal'];
+    } else {
+        $cekTipe = $tipeSoal['tipe'];
+    }
 
     echo json_encode($cekTipe);
 }
