@@ -42,7 +42,7 @@ require '../function/countAll.php'; ?>
                     <div class="card">
                         <div class="seo-fact sbg4">
                             <div class="p-4 d-flex justify-content-between align-items-center">
-                                <div class="seofct-icon"><i class="ti-arrow-circle-down"></i> Download Buku Panduan</div>
+                                <div class="seofct-icon"><i class="ti-book"></i> Buku Panduan</div>
                             </div>
                         </div>
                     </div>
