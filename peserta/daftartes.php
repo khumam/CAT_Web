@@ -116,9 +116,9 @@ require '../function/checkDaftarTes.php' ?>
                 {
                     render: function(data, type, row) {
                         if (row.kd_judul_tes == '4') {
-                            return "<div class='btn-group text-center'><button <?php echo ($checkDaftarTes == null) ? 'disabled' : '' ?>  data-id='" + row.kd_judul_tes + "' data-waktu='" + row.waktu + "' class='btn btn-xs btn-success btn-kerjakan'>Kerjakan</button></div>";
+                            return "<div class='btn-group text-center'><button <?php echo ($checkDaftarTes == null) ? 'disabled' : '' ?>  data-id='" + row.kd_judul_tes + "' data-waktu='" + row.waktu + "' class='btn btn-xs btn-success btn-kerjakan'>Kerjakan Tes</button></div>";
                         } else {
-                            return "<div class='btn-group text-center'><button id='btn-demo' data-id='" + row.kd_judul_tes + "' data-waktu='" + row.waktu + "' class='btn btn-xs btn-success btn-kerjakan'>Kerjakan</button></div>";
+                            return "<div class='btn-group text-center'><button id='btn-demo' data-id='" + row.kd_judul_tes + "' data-waktu='" + row.waktu + "' class='btn btn-xs btn-success btn-kerjakan'>Kerjakan Demo</button></div>";
                         }
                     }
                 }
