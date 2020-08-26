@@ -130,6 +130,10 @@ $skorSiswa =  round(50 + ((50 / 3) * $_SESSION['teta_jawab']), 2);
                     var soal = response.isi_soal;
                     $('#kesulitan-soal-ini').val(response.tingkat_kesulitan);
                     $('#jenis-soal-ini').val(response.tipe);
+                    if (soal == '<h6>Test telah selesai. Silahkan klik tombol Selanjutnya.</h6>') {
+                        $('#kesulitan-soal-ini').val('DONE');
+                        $('#jenis-soal-ini').val('DONE');
+                    }
                     soal = soal.replace("A. ", "<table style='margin-top: 2em; width: 100%'><tr><td style='padding: 1em'><input type='radio' value='A' name='jawaban'> A. ");
                     soal = soal.replace("B. ", "</td></tr><tr><td style='padding: 1em'><input type='radio' value='B' name='jawaban'> B. ");
                     soal = soal.replace("C. ", "</td></tr><tr><td style='padding: 1em'><input type='radio' value='C' name='jawaban'> C. ");
@@ -137,8 +141,6 @@ $skorSiswa =  round(50 + ((50 / 3) * $_SESSION['teta_jawab']), 2);
                     soal = soal.replace("E. ", "</td></tr><tr><td style='padding: 1em'><input type='radio' value='E' name='jawaban'> E. ");
                     $('#soal').html(soal + "</td></tr></table>");
                 } else {
-                    $('#kesulitan-soal-ini').val('DONE');
-                    $('#jenis-soal-ini').val('DONE');
                     $('#soal').html("Test telah selesai, terima kasih sudah mengerjakan. Silahkan klik tombol di bawah");
                 }
 
@@ -343,7 +345,7 @@ $skorSiswa =  round(50 + ((50 / 3) * $_SESSION['teta_jawab']), 2);
 
                     }
                 });
-            }, 1500);
+            }, 800);
         });
     </script>
     <script>
