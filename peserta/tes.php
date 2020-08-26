@@ -137,6 +137,8 @@ $skorSiswa =  round(50 + ((50 / 3) * $_SESSION['teta_jawab']), 2);
                     soal = soal.replace("E. ", "</td></tr><tr><td style='padding: 1em'><input type='radio' value='E' name='jawaban'> E. ");
                     $('#soal').html(soal + "</td></tr></table>");
                 } else {
+                    $('#kesulitan-soal-ini').val('DONE');
+                    $('#jenis-soal-ini').val('DONE');
                     $('#soal').html("Test telah selesai, terima kasih sudah mengerjakan. Silahkan klik tombol di bawah");
                 }
 
@@ -209,8 +211,10 @@ $skorSiswa =  round(50 + ((50 / 3) * $_SESSION['teta_jawab']), 2);
                 var kesulitanSaatIni = $('#kesulitan-soal-ini').val();
                 var dataKesulitan = [<?php echo $kesulitanFix; ?>];
                 var labels = [<?php echo $stateSoalFix; ?>];
-                dataKesulitan.push(kesulitanSaatIni);
-                labels.push(labels.length + 1);
+                if (kesulitanSaatIni != 'DONE') {
+                    dataKesulitan.push(kesulitanSaatIni);
+                    labels.push(labels.length + 1);
+                }
                 var chart = $('#hasilTestChart');
                 var result = new Chart(chart, {
                     type: 'line',
