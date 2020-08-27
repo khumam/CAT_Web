@@ -345,7 +345,7 @@ $skorSiswa =  round(50 + ((50 / 3) * $_SESSION['teta_jawab']), 2);
 
                     }
                 });
-            }, 800);
+            }, 1500);
         });
     </script>
     <script>
