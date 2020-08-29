@@ -20,7 +20,7 @@ require '../function/getNilaiReal.php';
 
 <div class="main-content-inner">
     <div class="sales-report-area mt-5 mb-5">
-        <div class="row">
+        <div class="row d-flex justify-content-end mb-3">
             <div class="col-md-3">
                 <div class="card">
                     <div class="card-body">
@@ -32,7 +32,32 @@ require '../function/getNilaiReal.php';
                     </div>
                 </div>
             </div>
-            <div class="col-md-9">
+        </div>
+        <div class="row">
+            <?php if ($_SESSION['kd_judul_tes'] == 5) { ?>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="header-title">Grafik Kesulitan</h4>
+                            <hr>
+                            <div style="height: 250px; width:100%">
+                                <canvas id="hasilTestChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="col-md-6">
+                    <div class="card">
+                        <h4 class="card-header">Grafik Skor</h4>
+                        <div class="card-body">
+                            <div style="height: 250px; width:100%">
+                                <canvas id="hasilTestChartSkor"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+            <?php } ?>
+            <div class="col-md-<?php echo ($_SESSION['kd_judul_tes'] == 5) ?'8' : '12'; ?>">
                 <div class="card">
                     <div class="card-body">
                         <h4 class="header-title">
@@ -52,30 +77,6 @@ require '../function/getNilaiReal.php';
             </div>
         </div>
     </div>
-    <?php if ($_SESSION['kd_judul_tes'] == 5) { ?>
-        <div class="row mt-5">
-            <div class="col-md-6">
-                <div class="card">
-                    <h4 class="card-header">Grafik Kesulitan</h4>
-                    <div class="card-body">
-                        <div style="height: 250px; width:100%">
-                            <canvas id="hasilTestChart"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="card">
-                    <h4 class="card-header">Grafik Skor</h4>
-                    <div class="card-body">
-                        <div style="height: 250px; width:100%">
-                            <canvas id="hasilTestChartSkor"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    <?php } ?>
 </div>
 
 <?php
@@ -134,11 +135,11 @@ $skorSiswa =  round(50 + ((50 / 3) * $_SESSION['teta_jawab']), 2);
                         $('#kesulitan-soal-ini').val('DONE');
                         $('#jenis-soal-ini').val('DONE');
                     }
-                    soal = soal.replace("A. ", "<table style='margin-top: 2em; width: 100%'><tr><td style='padding: 1em'><input type='radio' value='A' name='jawaban'> A. ");
-                    soal = soal.replace("B. ", "</td></tr><tr><td style='padding: 1em'><input type='radio' value='B' name='jawaban'> B. ");
-                    soal = soal.replace("C. ", "</td></tr><tr><td style='padding: 1em'><input type='radio' value='C' name='jawaban'> C. ");
-                    soal = soal.replace("D. ", "</td></tr><tr><td style='padding: 1em'><input type='radio' value='D' name='jawaban'> D. ");
-                    soal = soal.replace("E. ", "</td></tr><tr><td style='padding: 1em'><input type='radio' value='E' name='jawaban'> E. ");
+                    soal = soal.replace("A. ", "<table style='margin-top: 2em; width: 100%' class='table table-bordered'><tr><td style='padding: 1em; width: 20px'><input type='radio' value='A' name='jawaban'></td><td style='width: 20px'> A. </td><td>");
+                    soal = soal.replace("B. ", "</td></tr><tr><td style='padding: 1em; width: 20px'><input type='radio' value='B' name='jawaban'></td><td style='width: 20px'> B. </td><td>");
+                    soal = soal.replace("C. ", "</td></tr><tr><td style='padding: 1em; width: 20px'><input type='radio' value='C' name='jawaban'></td><td style='width: 20px'> C. </td><td>");
+                    soal = soal.replace("D. ", "</td></tr><tr><td style='padding: 1em; width: 20px'><input type='radio' value='D' name='jawaban'></td><td style='width: 20px'> D. </td><td>");
+                    soal = soal.replace("E. ", "</td></tr><tr><td style='padding: 1em; width: 20px'><input type='radio' value='E' name='jawaban'></td><td style='width: 20px'> E. </td><td>");
                     $('#soal').html(soal + "</td></tr></table>");
                 } else {
                     $('#soal').html("Test telah selesai, terima kasih sudah mengerjakan. Silahkan klik tombol di bawah");
