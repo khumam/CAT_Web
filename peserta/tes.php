@@ -20,22 +20,9 @@ require '../function/getNilaiReal.php';
 
 <div class="main-content-inner">
     <div class="sales-report-area mt-5 mb-5">
-        <div class="row d-flex justify-content-end mb-3">
-            <div class="col-md-3">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="header-title">
-                            Sisa waktu
-                        </h4>
-                        <hr>
-                        <h3 id="time"></h3>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="row">
             <?php if ($_SESSION['kd_judul_tes'] == 5) { ?>
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div class="card">
                         <div class="card-body">
                             <h4 class="header-title">Grafik Kesulitan</h4>
@@ -57,7 +44,7 @@ require '../function/getNilaiReal.php';
                     </div>
                 </div> -->
             <?php } ?>
-            <div class="col-md-<?php echo ($_SESSION['kd_judul_tes'] == 5) ?'8' : '12'; ?>">
+            <div class="col-md-<?php echo ($_SESSION['kd_judul_tes'] == 5) ? '6' : '9'; ?>">
                 <div class="card">
                     <div class="card-body">
                         <h4 class="header-title">
@@ -72,6 +59,17 @@ require '../function/getNilaiReal.php';
                             <input type="hidden" id="jenis-soal-ini">
                         </form>
                         <button class="mt-3 btn btn-success" id="submit" name="tombol-next" form="formSoal">Selanjutnya</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="header-title">
+                            Sisa waktu
+                        </h4>
+                        <hr>
+                        <h3 id="time"></h3>
                     </div>
                 </div>
             </div>
