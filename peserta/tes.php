@@ -10,9 +10,16 @@ require '../function/getNilaiReal.php';
 
 <div class="page-title-area">
     <div class="row align-items-center">
-        <div class="col-sm-6 py-3">
-            <div class="breadcrumbs-area clearfix">
+        <div class="col-sm-12 py-3">
+            <div class="breadcrumbs-area clearfix d-flex align-items-center">
                 <h4 class="page-title pull-left">Nama : <?php echo $_SESSION['nama']; ?></h4>
+                <?php if ($_SESSION['kd_judul_tes'] == 5) { ?>
+                    <div class="pull-right ml-auto">
+                        <h4>Sisa waktu
+                            <span class="ml-3" id="time"></span>
+                        </h4>
+                    </div>
+                <?php } ?>
             </div>
         </div>
     </div>
@@ -22,7 +29,7 @@ require '../function/getNilaiReal.php';
     <div class="sales-report-area mt-5 mb-5">
         <div class="row">
             <?php if ($_SESSION['kd_judul_tes'] == 5) { ?>
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <div class="card">
                         <div class="card-body">
                             <h4 class="header-title">Grafik Kesulitan</h4>
@@ -43,8 +50,20 @@ require '../function/getNilaiReal.php';
                         </div>
                     </div>
                 </div> -->
+            <?php } else { ?>
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="header-title">
+                                Sisa waktu
+                            </h4>
+                            <hr>
+                            <h3 id="time"></h3>
+                        </div>
+                    </div>
+                </div>
             <?php } ?>
-            <div class="col-md-<?php echo ($_SESSION['kd_judul_tes'] == 5) ? '6' : '9'; ?>">
+            <div class="col-md-<?php echo ($_SESSION['kd_judul_tes'] == 5) ? '8' : '9'; ?>">
                 <div class="card">
                     <div class="card-body">
                         <h4 class="header-title">
@@ -62,7 +81,7 @@ require '../function/getNilaiReal.php';
                     </div>
                 </div>
             </div>
-            <div class="col-md-3">
+            <!-- <div class="col-md-3">
                 <div class="card">
                     <div class="card-body">
                         <h4 class="header-title">
@@ -72,7 +91,7 @@ require '../function/getNilaiReal.php';
                         <h3 id="time"></h3>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>
@@ -115,6 +134,7 @@ $skorSiswa =  round(50 + ((50 / 3) * $_SESSION['teta_jawab']), 2);
                 tesWaktu = response;
             }
         });
+        // $('#mainSidebar').addClass('sbar_collapsed');
 
         var tampilSoal = $.ajax({
             url: "../function/getSoal.php",

@@ -1,4 +1,4 @@
-<div class="page-container">
+<div class="page-container sbar_collapsed" id="mainSidebar">
     <div class="sidebar-menu">
         <div class="sidebar-header">
             <div class="logo bg-light">

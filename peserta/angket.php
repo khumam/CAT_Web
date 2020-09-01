@@ -25,21 +25,36 @@ require '../function/getListAngketPeserta.php';
                         <input type="hidden" name="idsiswa" value="<?php echo $_GET['idsiswa']; ?>">
                         <input type="hidden" name="kd_judul_tes" value="<?php echo $_GET['idkodesoal']; ?>">
                         <input type="hidden" name="session_id" value="<?php echo $_GET['sessionid']; ?>">
+
                         <?php $index = 1;
                         foreach ($dataAngket as $ang) { ?>
                             <p class="lead"><b><?php echo $index . '. ' . $ang['angket']; ?></p></b><br>
-                            <input type="hidden" name="angket_id[]" value="<?php echo $ang['id'] ?>">
-                            <input type="radio" id="jawaban-<?php echo $ang['id'] ?>-1" name="jawaban-<?php echo $ang['id'] ?>" value="1" required>
-                            <label for="jawaban-<?php echo $ang['id'] ?>-1">Kurang Baik</label><br>
-                            <input type="radio" id="jawaban-<?php echo $ang['id'] ?>-2" name="jawaban-<?php echo $ang['id'] ?>" value="2" required>
-                            <label for="jawaban-<?php echo $ang['id'] ?>-2">Cukup Baik</label><br>
-                            <input type="radio" id="jawaban-<?php echo $ang['id'] ?>-3" name="jawaban-<?php echo $ang['id'] ?>" value="3" required>
-                            <label for="jawaban-<?php echo $ang['id'] ?>-3">Baik</label><br>
-                            <input type="radio" id="jawaban-<?php echo $ang['id'] ?>-4" name="jawaban-<?php echo $ang['id'] ?>" value="4" required>
-                            <label for="jawaban-<?php echo $ang['id'] ?>-4">Sangat Baik</label><br>
+                            <table class="table table-borderless">
+                                <tr>
+                                    <td style="width: 10px;"><input type="hidden" name="angket_id[]" value="<?php echo $ang['id'] ?>">
+                                        <input type="radio" id="jawaban-<?php echo $ang['id'] ?>-1" name="jawaban-<?php echo $ang['id'] ?>" value="1" required>
+                                    </td>
+                                    <td>
+                                        <label for="jawaban-<?php echo $ang['id'] ?>-1">Kurang Baik</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 10px;"><input type="radio" id="jawaban-<?php echo $ang['id'] ?>-2" name="jawaban-<?php echo $ang['id'] ?>" value="2" required></td>
+                                    <td><label for="jawaban-<?php echo $ang['id'] ?>-2">Cukup Baik</label></td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 10px;"><input type="radio" id="jawaban-<?php echo $ang['id'] ?>-3" name="jawaban-<?php echo $ang['id'] ?>" value="3" required></td>
+                                    <td><label for="jawaban-<?php echo $ang['id'] ?>-3">Baik</label></td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 10px;"><input type="radio" id="jawaban-<?php echo $ang['id'] ?>-4" name="jawaban-<?php echo $ang['id'] ?>" value="4" required></td>
+                                    <td><label for="jawaban-<?php echo $ang['id'] ?>-4">Sangat Baik</label></td>
+                                </tr>
+                            </table>
                             <br>
                             <?php $index++; ?>
                         <?php } ?>
+
                         <div class="form-group mt-5">
                             <p class="lead"><b><label for="komentar">Komentar dan saran</label></b></p>
                             <textarea name="komentar" id="komentar" class="form-control" placeholder="Masukan komentar dan saran"></textarea>
