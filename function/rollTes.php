@@ -20,6 +20,7 @@ if (isset($_POST['date'])) {
     $_SESSION['state'] = 0;
     $_SESSION['sign'] = null;
     $session_id = $_SESSION['session_id'];
+    $_SESSION['sessiontest'] = true;
 
     $sql = "INSERT INTO cat_tes (kd_judul_tes, waktu_tes, kd_peserta, session_id) VALUES ('$kd_judul_tes', '$date', '$kd_peserta', '$session_id')";
     $query = mysqli_query($db, $sql);

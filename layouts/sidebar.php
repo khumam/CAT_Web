@@ -1,4 +1,6 @@
-<div class="page-container sbar_collapsed" id="mainSidebar">
+<div class="page-container <?php if (isset($_SESSION['sessiontest'])) {
+                                echo 'sbar_collapsed';
+                            } ?>" id="mainSidebar">
     <div class="sidebar-menu">
         <div class="sidebar-header">
             <div class="logo bg-light">
