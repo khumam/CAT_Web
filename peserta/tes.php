@@ -7,7 +7,6 @@ require '../function/getNilaiReal.php';
 ?>
 
 
-
 <div class="page-title-area">
     <div class="row align-items-center">
         <div class="col-sm-12 py-3">
@@ -77,7 +76,7 @@ require '../function/getNilaiReal.php';
                             <input type="hidden" id="kesulitan-soal-ini">
                             <input type="hidden" id="jenis-soal-ini">
                         </form>
-                        <button class="mt-3 btn btn-success" id="submit" name="tombol-next" form="formSoal">Selanjutnya</button>
+                        <button class="mt-3 btn btn-success" style="display: none;" id="submit" name="tombol-next" form="formSoal">Selanjutnya</button>
                     </div>
                 </div>
             </div>
@@ -116,6 +115,15 @@ $skorSiswa =  round(50 + ((50 / 3) * $_SESSION['teta_jawab']), 2);
 <?php require '../layouts/footer.php'; ?>
 
 <script>
+    $(function() {
+        $(document).keydown(function(e) {
+            return (e.which || e.keyCode) != 116;
+        });
+    });
+    history.pushState(null, null, location.href);
+    window.onpopstate = function() {
+        history.go(1);
+    };
     $(document).ready(function() {
         var startTime = new Date();
         var tesWaktu = {};
@@ -162,6 +170,7 @@ $skorSiswa =  round(50 + ((50 / 3) * $_SESSION['teta_jawab']), 2);
                 } else {
                     $('#soal').html("Test telah selesai, terima kasih sudah mengerjakan. Silahkan klik tombol di bawah");
                 }
+                $('#submit').css('display', 'block');
 
                 if (response.is.testIsDone == true) {
                     window.location.replace('../function/logout.php');

@@ -49,7 +49,7 @@ if (isset($_SESSION['testIsDone'])) {
             $save = saveHasil();
             $_SESSION['state'] += 1;
             if ($save) {
-                header('Location: ../peserta/tes.php?tes=' . $_SESSION['kd_judul_tes']);
+                header('Location: ../peserta/tes.php?tes=' . $_SESSION['kd_judul_tes'] . '&toolbar=0');
             }
         } else {
 

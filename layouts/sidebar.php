@@ -13,10 +13,10 @@
                     <ul class="metismenu" id="menu">
                         <?php if ($_SESSION['role'] == 'Peserta') { ?>
                             <li class="active">
-                                <a href="../peserta/index.php" aria-expanded="true"><i class="ti-dashboard"></i><span>Dashboard</span></a>
+                                <a <?php echo (isset($_SESSION['timeStart'])) ? '' : 'href="../peserta/index.php"'; ?> aria-expanded="true"><i class="ti-dashboard"></i><span>Dashboard</span></a>
                             </li>
                             <li>
-                                <a href="../peserta/daftartes.php" aria-expanded="true"><i class="ti-layout-list-thumb"></i><span>Daftar Test
+                                <a <?php echo (isset($_SESSION['timeStart'])) ? '' : 'href="../peserta/daftartes.php"'; ?> aria-expanded="true"><i class="ti-layout-list-thumb"></i><span>Daftar Test
                                     </span></a>
                             </li>
                         <?php } ?>
