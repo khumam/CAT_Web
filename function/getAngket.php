@@ -14,7 +14,7 @@ if (isset($_POST['all'])) {
 }
 
 if (isset($_POST['id'])) {
-    $id = $_POST['id'];
+    $id = mysqli_real_escape_string($db, $_POST['id']);
     $sql = "SELECT * FROM cat_angket WHERE id = $id";
     $query = mysqli_query($db, $sql);
     $data = mysqli_fetch_assoc($query);

@@ -14,22 +14,4 @@
 </head>
 
 <body>
-    <!-- 
-    <?php if (isset($_SESSION) || isset($_POST)) { ?>
-        <div class="container py-5">
-            <div class="row">
-                <div class="col-md-6">
-                    <h4>Session debuging</h4>
-                    <pre>
-                    <?php print_r($_SESSION); ?>
-                </pre>
-                </div>
-                <div class="col-md-6">
-                    <h4>Post debuging</h4>
-                    <pre>
-                    <?php print_r($_POST); ?>
-                </pre>
-                </div>
-            </div>
-        </div>
-    <?php } ?> -->
+</body>

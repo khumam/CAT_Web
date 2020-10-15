@@ -15,13 +15,13 @@ if (isset($_SESSION['testIsDone'])) {
     if (isset($_POST['tombol-next'])) {
 
         // Cek jawaban peserta
-        $jawaban = ucwords($_POST['jawaban']);
+        $jawaban = ucwords(mysqli_real_escape_string($db, $_POST['jawaban']));
         $id_soal = $_SESSION['id_soal'][$_SESSION['state']];
 
         $getSoal = "SELECT * FROM cat_soal WHERE kd_soal = $id_soal";
         $dataSoal = mysqli_query($db, $getSoal);
         $dataSoal = mysqli_fetch_assoc($dataSoal);
-        $_SESSION['waktu-jawab-per-soal'] = $_POST['waktu-soal'];
+        $_SESSION['waktu-jawab-per-soal'] = mysqli_real_escape_string($db, $_POST['waktu-soal']);
 
         if ($dataSoal['kunci_soal'] == $jawaban) {
             // SETTING JAWAB BENAR

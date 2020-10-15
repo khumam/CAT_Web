@@ -4,7 +4,7 @@ session_start();
 require 'db_connect.php';
 
 if (isset($_POST['kd_soal'])) {
-    $id = $_POST['kd_soal'];
+    $id = mysqli_real_escape_string($db, $_POST['kd_soal']);
     $sql = "SELECT * FROM cat_soal WHERE kd_soal = $id";
     $query = mysqli_query($db, $sql);
     $dataSoal = mysqli_fetch_assoc($query);
@@ -46,7 +46,7 @@ if (isset($_POST['all'])) {
 }
 
 if (isset($_POST['kesulitan'])) {
-    $kesulitan = $_POST['kesulitan'];
+    $kesulitan = mysqli_real_escape_string($db, $_POST['kesulitan']);
     $kategori = $_SESSION['kd_judul_tes'];
 
     if ($_POST['sign'] != null) {
@@ -82,9 +82,9 @@ if (isset($_POST['kesulitan'])) {
 
     if (mysqli_num_rows(mysqli_query($db, $sql)) == 0) {
         // header('Location: ../peserta/done.php');
-        if(isset($_SESSION['cekSemuaJawab'])){
+        if (isset($_SESSION['cekSemuaJawab'])) {
             $checkAllWrong = array_filter($_SESSION['cekSemuaJawab']);
-            if(empty($checkAllWrong)){
+            if (empty($checkAllWrong)) {
                 $_SESSION['teta_jawab'] = -3;
             }
         }

@@ -2,7 +2,6 @@
 require '../function/check_guru.php';
 require '../layouts/header.php';
 require '../layouts/sidebar.php'; ?>
-
 <div class="main-content-inner">
     <div class="sales-report-area mt-5 mb-5">
         <?php require '../function/notif.php'; ?>

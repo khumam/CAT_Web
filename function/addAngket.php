@@ -5,9 +5,9 @@ require 'db_connect.php';
 
 if (isset($_POST['tombol-tambah'])) {
     if ($_POST['jenis'] == 'angket') {
-        $angket = $_POST['angket'];
-        $tipe = $_POST['tipe'];
-        $sub_id = $_POST['sub_id'];
+        $angket = mysqli_real_escape_string($db, $_POST['angket']);
+        $tipe = mysqli_real_escape_string($db, $_POST['tipe']);
+        $sub_id = mysqli_real_escape_string($db, $_POST['sub_id']);
 
         $sql = "INSERT INTO cat_angket(sub_id, angket, tipe) VALUES ('$sub_id', '$angket', '$tipe')";
         $query = mysqli_query($db, $sql);
@@ -22,7 +22,7 @@ if (isset($_POST['tombol-tambah'])) {
             header('Location: ../admin/angket.php');
         }
     } else if ($_POST['jenis'] == 'subangket') {
-        $nama_sub = $_POST['nama_sub'];
+        $nama_sub = mysqli_real_escape_string($db, $_POST['nama_sub']);
 
         $sql = "INSERT INTO cat_sub_angket(nama_sub) VALUES ('$nama_sub')";
         $query = mysqli_query($db, $sql);

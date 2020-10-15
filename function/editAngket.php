@@ -5,10 +5,10 @@ require 'db_connect.php';
 
 if (isset($_POST['tombol-tambah'])) {
     if ($_POST['jenis'] == 'angket') {
-        $id = $_POST['id'];
-        $angket = $_POST['angket'];
-        $tipe = $_POST['tipe'];
-        $sub_id = $_POST['sub_id'];
+        $id = mysqli_real_escape_string($db, $_POST['id']);
+        $angket = mysqli_real_escape_string($db, $_POST['angket']);
+        $tipe = mysqli_real_escape_string($db, $_POST['tipe']);
+        $sub_id = mysqli_real_escape_string($db, $_POST['sub_id']);
 
         $sql = "UPDATE cat_angket SET sub_id = '$sub_id', angket = '$angket', tipe = '$tipe' WHERE id = $id";
         $query = mysqli_query($db, $sql);
@@ -23,8 +23,8 @@ if (isset($_POST['tombol-tambah'])) {
             header('Location: ../admin/angket.php');
         }
     } else if ($_POST['jenis'] == 'subangket') {
-        $id = $_POST['id'];
-        $nama_sub = $_POST['nama_sub'];
+        $id = mysqli_real_escape_string($db, $_POST['id']);
+        $nama_sub = mysqli_real_escape_string($db, $_POST['nama_sub']);
 
         $sql = "UPDATE cat_sub_angket SET nama_sub = '$nama_sub' WHERE id = $id";
         $query = mysqli_query($db, $sql);

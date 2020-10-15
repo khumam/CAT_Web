@@ -4,9 +4,9 @@ require 'check_guru.php';
 require 'db_connect.php';
 
 if (isset($_POST['tombol-simpan'])) {
-    $kd_user = $_POST['kd_user'];
-    $nama_user = $_POST['nama_user'];
-    $nomor_user = $_POST['nomor_user'];
+    $kd_user = mysqli_real_escape_string($db, $_POST['kd_user']);
+    $nama_user = mysqli_real_escape_string($db, $_POST['nama_user']);
+    $nomor_user = mysqli_real_escape_string($db, $_POST['nomor_user']);
 
     $sql = "UPDATE cat_users SET nama_user = '$nama_user', nomor_user = '$nomor_user' WHERE kd_user = $kd_user";
     $query = mysqli_query($db, $sql);

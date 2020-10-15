@@ -14,7 +14,7 @@ if (isset($_POST['all'])) {
 
     echo json_encode($data);
 } else if (isset($_POST['byid'])) {
-    $id = $_POST['byid'];
+    $id = mysqli_real_escape_string($db, $_POST['byid']);
     $sql = "SELECT kd_user, nama_user, nomor_user, role FROM cat_users WHERE role ='Peserta' AND kd_user = $id";
     $query = mysqli_query($db, $sql);
     $data = mysqli_fetch_assoc($query);

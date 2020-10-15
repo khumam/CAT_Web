@@ -5,12 +5,12 @@ require 'db_connect.php';
 
 if (isset($_POST['tombol-edit'])) {
 
-    $id = $_POST['kd_soal'];
-    $soal = $_POST['soal'];
-    $kunci = $_POST['kunci'];
-    $kesulitan = $_POST['kesulitan'];
-    $tipe = $_POST['tipesoal'];
-    $kategori = $_POST['jenisTes'];
+    $id = mysqli_real_escape_string($db, $_POST['kd_soal']);
+    $soal = mysqli_real_escape_string($db, $_POST['soal']);
+    $kunci = mysqli_real_escape_string($db, $_POST['kunci']);
+    $kesulitan = mysqli_real_escape_string($db, $_POST['kesulitan']);
+    $tipe = mysqli_real_escape_string($db, $_POST['tipesoal']);
+    $kategori = mysqli_real_escape_string($db, $_POST['jenisTes']);
 
     $sql = "UPDATE cat_soal SET isi_soal = '$soal', kunci_soal = '$kunci', tipe = '$tipe', tingkat_kesulitan = '$kesulitan', kategori = '$kategori' WHERE kd_soal = $id";
     $query = mysqli_query($db, $sql);

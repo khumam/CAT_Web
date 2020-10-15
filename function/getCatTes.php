@@ -4,7 +4,7 @@ require 'db_connect.php';
 
 if (isset($_POST['kd_judul_tes'])) {
 
-    $kd_judul_tes = $_POST['kd_judul_tes'];
+    $kd_judul_tes = mysqli_real_escape_string($db, $_POST['kd_judul_tes']);
     $kd_peserta = $_SESSION['id'];
 
     $sql = "SELECT * FROM cat_tes WHERE kd_judul_tes = $kd_peserta AND kd_peserta = $kd_judul_tes ORDER BY kd_tes ASC LIMIT 1";

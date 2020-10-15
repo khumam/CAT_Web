@@ -5,7 +5,7 @@ require 'db_connect.php';
 
 if (isset($_POST['tombol-login'])) {
 
-    $nomorOrUsername = $_POST['nomorusername'];
+    $nomorOrUsername = mysqli_real_escape_string($db, $_POST['nomorusername']);
     $password = md5($_POST['password']);
 
     $sql = "SELECT * FROM  cat_users WHERE nomor_user = '$nomorOrUsername' and  password_user = '$password'";

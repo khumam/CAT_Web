@@ -5,7 +5,7 @@ require 'db_connect.php';
 
 if (isset($_POST['id'])) {
     if ($_POST['jenis'] == 'angket') {
-        $id = $_POST['id'];
+        $id = mysqli_real_escape_string($db, $_POST['id']);
 
         $sql = "DELETE FROM cat_angket WHERE id = $id";
         $query = mysqli_query($db, $sql);
@@ -25,7 +25,7 @@ if (isset($_POST['id'])) {
             ]
         );
     } else if ($_POST['jenis'] == 'subangket') {
-        $id = $_POST['id'];
+        $id = mysqli_real_escape_string($db, $_POST['id']);
 
         $sql = "DELETE FROM cat_sub_angket WHERE id = $id";
         $query = mysqli_query($db, $sql);

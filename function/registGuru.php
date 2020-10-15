@@ -4,8 +4,8 @@ session_start();
 require 'db_connect.php';
 
 if (isset($_POST['tombol-daftar'])) {
-    $username = $_POST['username'];
-    $nama = $_POST['nama'];
+    $username = mysqli_real_escape_string($db, $_POST['username']);
+    $nama = mysqli_real_escape_string($db, $_POST['nama']);
     $password = md5($_POST['password']);
     $role = 'Guru';
 

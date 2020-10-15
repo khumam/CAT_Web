@@ -5,11 +5,11 @@ require 'db_connect.php';
 
 if (isset($_POST['tombol-tambah'])) {
 
-    $soal = $_POST['soal'];
-    $kunci = $_POST['kunci'];
-    $kesulitan = $_POST['kesulitan'];
-    $tipe = $_POST['tipesoal'];
-    $kategori = $_POST['jenisTes'];
+    $soal = mysqli_real_escape_string($db, $_POST['soal']);
+    $kunci = mysqli_real_escape_string($db, $_POST['kunci']);
+    $kesulitan = mysqli_real_escape_string($db, $_POST['kesulitan']);
+    $tipe = mysqli_real_escape_string($db, $_POST['tipesoal']);
+    $kategori = mysqli_real_escape_string($db, $_POST['jenisTes']);
 
     $berhasil = 0;
     $error = 0;

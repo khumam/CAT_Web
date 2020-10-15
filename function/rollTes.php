@@ -4,8 +4,8 @@ require 'check_peserta.php';
 require 'db_connect.php';
 
 if (isset($_POST['date'])) {
-    $kd_judul_tes = $_POST['kd_judul_tes'];
-    $date = $_POST['date'];
+    $kd_judul_tes = mysqli_real_escape_string($db, $_POST['kd_judul_tes']);
+    $date = mysqli_real_escape_string($db, $_POST['date']);
     $kd_peserta = $_SESSION['id'];
 
     $getTes = "SELECT * FROM cat_daftar_tes WHERE kd_judul_tes = $kd_judul_tes";

@@ -5,8 +5,8 @@ require 'db_connect.php';
 
 if (isset($_POST['tombol-simpan'])) {
 
-    $nama_user = $_POST['nama_user'];
-    $nomor_user = $_POST['nomor_user'];
+    $nama_user = mysqli_real_escape_string($db, $_POST['nama_user']);
+    $nomor_user = mysqli_real_escape_string($db, $_POST['nomor_user']);
     $password_user = md5($_POST['password_user']);
 
     $sql = "INSERT INTO cat_users (nama_user, nomor_user, password_user, role) VALUES ('$nama_user', '$nomor_user', '$password_user', 'Peserta')";

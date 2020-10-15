@@ -4,8 +4,8 @@ require 'check_guru.php';
 require 'db_connect.php';
 
 if (isset($_POST['tombol-tambah'])) {
-    $judul = $_POST['judul'];
-    $waktu = $_POST['waktutes'];
+    $judul = mysqli_real_escape_string($db, $_POST['judul']);
+    $waktu = mysqli_real_escape_string($db, $_POST['waktutes']);
 
     $sql = "INSERT INTO cat_daftar_tes (judul, waktu) VALUES ('$judul', '$waktu')";
     $query = mysqli_query($db, $sql);

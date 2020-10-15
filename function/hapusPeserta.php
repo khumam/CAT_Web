@@ -5,7 +5,7 @@ require 'db_connect.php';
 
 if (isset($_POST['id'])) {
 
-    $id = $_POST['id'];
+    $id = mysqli_real_escape_string($db, $_POST['id']);
 
     $sql = "DELETE FROM cat_users WHERE kd_user = $id";
     $query = mysqli_query($db, $sql);
