@@ -10,6 +10,12 @@ require '../layouts/sidebar.php'; ?>
         <?php require '../function/notif.php'; ?>
         <div class="row">
             <div class="col-md-12">
+                <a href="angketindividu.php" class="btn btn-success float-right mb-3">Hasil Individu</a>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
                         <h4>Hasil Angket</h4>
