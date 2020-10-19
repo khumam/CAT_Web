@@ -118,41 +118,44 @@ require '../function/getNilai.php'; ?>
                 </div>
             </div>
         </div>
-
-        <div class="row mb-5">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-body">
-                        <h4>Kesulitan soal</h4>
-                        <hr>
-                        <div style="height: 10%;">
-                            <canvas id="hasilTestChart"></canvas>
+        <div style="display: block; page-break-before: always; ">
+            <div class="row mb-5">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4>Kesulitan soal</h4>
+                            <hr>
+                            <div style="min-height: 300px; width: 80%">
+                                <canvas id="hasilTestChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-5">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4>Grafik skor</h4>
+                            <hr>
+                            <div style="min-height: 300px; width: 80%">
+                                <canvas id="hasilTestChartSkor"></canvas>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row mb-5">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-body">
-                        <h4>Grafik skor</h4>
-                        <hr>
-                        <div style="height: 10%;">
-                            <canvas id="hasilTestChartSkor"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row mb-5">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-body">
-                        <h4>Grafik Kecepatan Pengerjaan</h4>
-                        <hr>
-                        <div style="height: 10%;">
-                            <canvas id="hasilTestChartWaktu"></canvas>
+        <div style="display: block; page-break-before: always; ">
+            <div class="row mb-5">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4>Grafik Kecepatan Pengerjaan</h4>
+                            <hr>
+                            <div style="min-height: 300px; width: 80%">
+                                <canvas id="hasilTestChartWaktu"></canvas>
+                            </div>
                         </div>
                     </div>
                 </div>
